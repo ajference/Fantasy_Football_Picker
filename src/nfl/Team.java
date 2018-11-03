@@ -21,14 +21,13 @@ public class Team {
 	
 	//Constructors
 	public Team () {
-			name = "Unknown";
-		
+		name = "Unknown";
 		offensiveRank = -999;
 		defensiveRank = -999;
 	}
+	
 	public Team (String teamName, int oRank, int dRank) {
 		name = teamName;
-		
 		offensiveRank = oRank;
 		defensiveRank = dRank;
 	}
@@ -54,6 +53,4 @@ public class Team {
 	public int getDefensiveRank() {
 		return defensiveRank;
 	}
-	
-	
 }
