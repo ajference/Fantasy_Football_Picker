@@ -76,16 +76,23 @@ public class Driver1 {
 
 					System.out.println("Enter a Match you want to view or enter 35 to go choose a different week or 40 to go back to main screen");
 					weekchooser = scan.nextInt();
-					match = weekchooser;
-					//temp.teamComparison()
+					
 					if(weekchooser == 40) {
 						g = 0; 
 						back = 0;
 						destination = scan.nextLine();
 					}
-					if(weekchooser == 35) {
+					else if(weekchooser == 35) {
 						back = 1;
 						destination = scan.nextLine();
+					}
+					else if(weekchooser >= 1 && weekchooser <= 17) {
+					
+					match = weekchooser;
+					NFL.teamComparison(week, match, args);
+					}
+					else {
+						System.out.println("Enter a Valid Command");
 					}
 				}
 				}

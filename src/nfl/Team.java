@@ -1,13 +1,11 @@
 package nfl;
 
-import java.util.ArrayList;
 
 
 public class Team {
 
 	//Team Identifiers 
 	public String name;
-	public ArrayList<Integer> schedule;
 	
 	
 	//Team Rosters
