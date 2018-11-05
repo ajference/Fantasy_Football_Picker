@@ -1,4 +1,5 @@
 package nfl;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -7,16 +8,26 @@ import java.util.Scanner;
 
 public class Driver1 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		NFL temp = new NFL();
+		temp.buildNFL(args);
+		
+	
+		
 	String destination = "";
 	int g = 0;
 	int back = 0;
 	int weekchooser = 0;
 	int firstTime = 0;
+	int week = 0;
+	int match = 0;
 	Scanner scan = new Scanner (System.in);
 	String[] Current = new String[8];
 	while(back == 0) {
 		back = 1;
+		week = 0;
+		match = 0;
 		while(g == 0) {
 			System.out.println("Type out Destination : Weekly -- Pick Guru -- My Team -- Top Players");
 			destination = scan.nextLine().toLowerCase();
@@ -43,37 +54,44 @@ public class Driver1 {
 			}
 		if(g == 1) {	//Weekly
 			while(back == 1) {
-				System.out.println("These Are the teams that are playing this week");
-				System.out.println("1 Eagles vs Seahawks \n2 Dolphins vs Patriots\n3 Mo vs Bamba\n4 Justin vs Josh");
-				//NFL.printWeeklySchedule();
-				System.out.println("Choose Which Match you Want to View or 9 to go back");
+				
+//				System.out.println("These Are the teams that are playing this week");
+//				System.out.println("1 Eagles vs Seahawks \n2 Dolphins vs Patriots\n3 Mo vs Bamba\n4 Justin vs Josh");
+//				//NFL.printWeeklySchedule();
+				System.out.println("Enter a week you want to view (1-17) or Enter 25 to go back");
 				weekchooser = scan.nextInt();
-				if(weekchooser == 9) {
+				week = weekchooser;
+				if(weekchooser == 25) {
 					g = 0; 
 					back = 0;
 					destination = scan.nextLine();
 				}
-				
-				if(weekchooser == 2) {
-					System.out.println("Team 1 Vs Team 2");
-					System.out.println("Team's 1 Ranks is 3 Team 2's Rank is 1 ");
-					System.out.println("The Team favored to win is team 2 ");
-					System.out.println("Key Playres to look out for \nMarek Perez \nAJ Ference \nJoshua Silverio\n");
-					System.out.println("Enter 1 to go back to weekly schedule or 2 to go back to main screen");
+				else if(weekchooser > 17) {
+					System.out.println("Enter A valid Week");
+				}
+				else {
+				temp.printWeeklySchedule(weekchooser);
+				back = 2;
+				while (back == 2) {
+
+					System.out.println("Enter a Match you want to view or enter 35 to go choose a different week or 40 to go back to main screen");
 					weekchooser = scan.nextInt();
-					if(weekchooser == 2) {
+					match = weekchooser;
+					//temp.teamComparison()
+					if(weekchooser == 40) {
 						g = 0; 
 						back = 0;
 						destination = scan.nextLine();
 					}
-					if(weekchooser == 1) {
+					if(weekchooser == 35) {
 						back = 1;
 						destination = scan.nextLine();
 					}
 				}
-				
+				}
+				}
 			}
-		}
+		
 		if(g == 2) {	//PickGUru
 			String[] Temp = {"JO", "Momma", "is", "so", "nice"};
 			String[] guru = new String[8];
@@ -106,15 +124,19 @@ public class Driver1 {
 					
 					System.out.println("Enter 1 to go back to main screen");
 					weekchooser = scan.nextInt();
+					
 					if(weekchooser == 1) {
 						g = 0; 
 						back = 0;
 						destination = scan.nextLine();
+						
 					}
 					}
-				
+		
 			}
+			
 		}
+		
 		if(g == 3) {	//Team Maker
 			System.out.println("Lets make a Team\n");
 			System.out.println("Enter 1 to go back to main screen");
@@ -137,10 +159,10 @@ public class Driver1 {
 			}
 			
 		}
-		
+	}
 		}
 }
 	
 	
-}
+
 
