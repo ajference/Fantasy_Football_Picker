@@ -11,7 +11,7 @@ public class Driver1 {
 	public static void main(String[] args) throws FileNotFoundException {
 		
 		NFL temp = new NFL();
-		temp.buildNFL(args);
+		temp.buildNFL();
 		
 	
 		
@@ -89,7 +89,7 @@ public class Driver1 {
 					else if(weekchooser >= 1 && weekchooser <= 17) {
 					
 					match = weekchooser;
-					NFL.teamComparison(week, match, args);
+					NFL.teamComparison(week, match);
 					}
 					else {
 						System.out.println("Enter a Valid Command");

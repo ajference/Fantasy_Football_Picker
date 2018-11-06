@@ -1,0 +1,629 @@
+7700,RB,Arizona Cardinals,David Johnson
+5500,WR,Arizona Cardinals,Christian Kirk
+5500,QB,Arizona Cardinals,Josh Rosen
+5200,WR,Arizona Cardinals,Larry Fitzgerald
+5000,QB,Arizona Cardinals,Sam Bradford
+4400,TE,Arizona Cardinals,Ricky Seals-Jones
+4100,QB,Arizona Cardinals,Mike Glennon
+4000,QB,Arizona Cardinals,Charles Kanoff
+3600,DST,Arizona Cardinals,Arizona Cardinals
+3300,RB,Arizona Cardinals,Chase Edmonds
+3300,TE,Arizona Cardinals,Jermaine Gresham
+3100,WR,Arizona Cardinals,Chad Williams
+3000,WR,Arizona Cardinals,Trent Sherfield
+3000,RB,Arizona Cardinals,Derrick Coleman
+3000,RB,Arizona Cardinals,Brandon Wilds
+3000,RB,Arizona Cardinals,T.J. Logan
+3000,WR,Arizona Cardinals,J.J. Nelson
+3000,WR,Arizona Cardinals,Jalen Tolliver
+2900,WR,Arizona Cardinals,Robert Foster
+2900,TE,Arizona Cardinals,Andrew Vollert
+2900,TE,Arizona Cardinals,Gabe Holmes
+7900,WR,Atlanta Falcons,Julio Jones
+6900,QB,Atlanta Falcons,Matt Ryan
+5900,WR,Atlanta Falcons,Calvin Ridley
+5700,RB,Atlanta Falcons,Tevin Coleman
+5200,WR,Atlanta Falcons,Mohamed Sanu
+5100,TE,Atlanta Falcons,Austin Hooper
+4200,RB,Atlanta Falcons,Ito Smith
+3900,QB,Atlanta Falcons,Kurt Benkert
+3900,QB,Atlanta Falcons,Matt Schaub
+3200,WR,Atlanta Falcons,Justin Hardy
+3000,WR,Atlanta Falcons,Russell Gage
+2900,WR,Atlanta Falcons,Marvin Hall
+2900,WR,Atlanta Falcons,Devin Gray
+2900,RB,Atlanta Falcons,Ricky Ortiz
+2900,RB,Atlanta Falcons,Brian Hill
+2800,DST,Atlanta Falcons,Atlanta Falcons
+2800,TE,Atlanta Falcons,Jaeden Graham
+2800,TE,Atlanta Falcons,Alex Gray
+2800,TE,Atlanta Falcons,Logan Paulsen
+2800,TE,Atlanta Falcons,Eric Saubert
+6000,WR,Baltimore Ravens,John Brown
+5900,WR,Baltimore Ravens,Michael Crabtree
+5800,RB,Baltimore Ravens,Alex Collins
+5800,QB,Baltimore Ravens,Joe Flacco
+4900,QB,Baltimore Ravens,Lamar Jackson
+4400,QB,Baltimore Ravens,Robert Griffin
+4300,WR,Baltimore Ravens,Willie Snead
+3800,RB,Baltimore Ravens,Javorius Allen
+3200,DST,Baltimore Ravens,Baltimore Ravens
+3100,TE,Baltimore Ravens,Hayden Hurst
+3000,RB,Baltimore Ravens,Gus Edwards
+2900,WR,Baltimore Ravens,Chris Moore
+2900,RB,Baltimore Ravens,Christopher Ezeala
+2900,WR,Baltimore Ravens,Tim White
+2900,TE,Baltimore Ravens,Nick Boyle
+2900,TE,Baltimore Ravens,Mark Andrews
+2900,WR,Baltimore Ravens,Jordan Lasley
+2900,WR,Baltimore Ravens,Quincy Adeboyejo
+2900,TE,Baltimore Ravens,Maxx Williams
+2900,RB,Baltimore Ravens,Patrick Ricard
+2800,TE,Baltimore Ravens,Darren Waller
+6100,RB,Buffalo Bills,LeSean McCoy
+5100,QB,Buffalo Bills,Derek Anderson
+5100,RB,Buffalo Bills,Chris Ivory
+5000,QB,Buffalo Bills,Josh Allen
+4900,QB,Buffalo Bills,Nathan Peterman
+3800,WR,Buffalo Bills,Zay Jones
+3600,WR,Buffalo Bills,Kelvin Benjamin
+3200,RB,Buffalo Bills,Marcus Murphy
+3200,TE,Buffalo Bills,Charles Clay
+2900,WR,Buffalo Bills,Andre Holmes
+2900,RB,Buffalo Bills,Keith Ford
+2900,TE,Buffalo Bills,Jason Croom
+2900,WR,Buffalo Bills,Cam Phillips
+2900,WR,Buffalo Bills,Hunter Sharp
+2900,RB,Buffalo Bills,Taiwan Jones
+2900,RB,Buffalo Bills,Patrick DiMarco
+2900,WR,Buffalo Bills,Ray-Ray McCloud
+2800,TE,Buffalo Bills,Logan Thomas
+2700,DST,Buffalo Bills,Buffalo Bills
+8100,RB,Carolina Panthers,Christian McCaffrey
+7500,QB,Carolina Panthers,Cam Newton
+7000,WR,Carolina Panthers,Devin Funchess
+6000,TE,Carolina Panthers,Greg Olsen
+4300,WR,Carolina Panthers,D.J. Moore
+4000,QB,Carolina Panthers,Taylor Heinicke
+3600,DST,Carolina Panthers,Carolina Panthers
+3300,WR,Carolina Panthers,Torrey Smith
+3200,WR,Carolina Panthers,Curtis Samuel
+3100,RB,Carolina Panthers,C.J. Anderson
+3000,WR,Carolina Panthers,Jarius Wright
+3000,TE,Carolina Panthers,Ian Thomas
+2900,WR,Carolina Panthers,Mose Frazier
+2900,RB,Carolina Panthers,Reggie Bonnafon
+2900,WR,Carolina Panthers,Damiere Byrd
+2900,RB,Carolina Panthers,Cameron Artis-Payne
+2900,TE,Carolina Panthers,Chris Manhertz
+2900,RB,Carolina Panthers,Alex Armah
+2800,TE,Carolina Panthers,Jason Vander Laan
+6900,RB,Chicago Bears,Tarik Cohen
+6200,QB,Chicago Bears,Mitchell Trubisky
+6100,WR,Chicago Bears,Allen Robinson
+5900,TE,Chicago Bears,Trey Burton
+5900,RB,Chicago Bears,Jordan Howard
+5400,WR,Chicago Bears,Taylor Gabriel
+4100,WR,Chicago Bears,Anthony Miller
+4000,QB,Chicago Bears,Tyler Bray
+4000,QB,Chicago Bears,Chase Daniel
+4000,DST,Chicago Bears,Chicago Bears
+3000,WR,Chicago Bears,Kevin White
+3000,WR,Chicago Bears,Javon Wims
+2900,RB,Chicago Bears,Benny Cunningham
+2900,RB,Chicago Bears,Taquan Mizzell
+2900,RB,Chicago Bears,Michael Burton
+2900,WR,Chicago Bears,Tanner Gentry
+2900,WR,Chicago Bears,Josh Bellamy
+2900,RB,Chicago Bears,Ryan Nall
+2900,TE,Chicago Bears,Adam Shaheen
+2800,TE,Chicago Bears,Ben Braunecker
+2800,TE,Chicago Bears,Daniel Brown
+2800,TE,Chicago Bears,Dion Sims
+8400,WR,Cincinnati Bengals,A.J. Green
+7900,RB,Cincinnati Bengals,Joe Mixon
+7400,WR,Cincinnati Bengals,Tyler Boyd
+7000,QB,Cincinnati Bengals,Andy Dalton
+4800,TE,Cincinnati Bengals,C.J. Uzomah
+4700,RB,Cincinnati Bengals,Giovani Bernard
+4300,QB,Cincinnati Bengals,Christian Hackenberg
+4000,QB,Cincinnati Bengals,Jeff Driskel
+3900,QB,Cincinnati Bengals,Quinton Flowers
+3200,WR,Cincinnati Bengals,Cody Core
+3200,WR,Cincinnati Bengals,John Ross
+3100,RB,Cincinnati Bengals,Mark Walton
+3000,DST,Cincinnati Bengals,Cincinnati Bengals
+2900,WR,Cincinnati Bengals,Josh Malone
+2900,WR,Cincinnati Bengals,Kermit Whitfield
+2900,WR,Cincinnati Bengals,Alex Erickson
+2900,TE,Cincinnati Bengals,Tyler Kroft
+2900,WR,Cincinnati Bengals,Moritz Bohringer
+2900,WR,Cincinnati Bengals,Auden Tate
+2800,TE,Cincinnati Bengals,Jordan Franks
+2800,TE,Cincinnati Bengals,Matt Lengel
+7600,WR,Cleveland Browns,Jarvis Landry
+6800,RB,Cleveland Browns,Nick Chubb
+5500,QB,Cleveland Browns,Baker Mayfield
+5000,TE,Cleveland Browns,David Njoku
+4900,QB,Cleveland Browns,Tyrod Taylor
+4400,WR,Cleveland Browns,Antonio Callaway
+4400,QB,Cleveland Browns,Drew Stanton
+4400,RB,Cleveland Browns,Duke Johnson
+3400,WR,Cleveland Browns,Damion Ratley
+3200,WR,Cleveland Browns,Rashard Higgins
+3100,WR,Cleveland Browns,Breshad Perriman
+2900,RB,Cleveland Browns,Devante Mays
+2900,TE,Cleveland Browns,Darren Fells
+2900,WR,Cleveland Browns,Da’Mari Scott
+2900,DST,Cleveland Browns,Cleveland Browns
+2900,RB,Cleveland Browns,Dontrell Hilliard
+2800,TE,Cleveland Browns,Seth DeValve
+2800,TE,Cleveland Browns,Orson Charles
+8000,RB,Dallas Cowboys,Ezekiel Elliott
+6400,QB,Dallas Cowboys,Dak Prescott
+6100,WR,Dallas Cowboys,Amari Cooper
+4400,WR,Dallas Cowboys,Cole Beasley
+3900,TE,Dallas Cowboys,Geoff Swaim
+3900,QB,Dallas Cowboys,Cooper Rush
+3900,QB,Dallas Cowboys,Mike White
+3500,WR,Dallas Cowboys,Michael Gallup
+3400,WR,Dallas Cowboys,Allen Hurns
+3200,DST,Dallas Cowboys,Dallas Cowboys
+3100,RB,Dallas Cowboys,Rod Smith
+3000,WR,Dallas Cowboys,Tavon Austin
+2900,RB,Dallas Cowboys,Darius Jackson
+2900,WR,Dallas Cowboys,Lance Lenoir
+2900,RB,Dallas Cowboys,Jamize Olawale
+2900,RB,Dallas Cowboys,Jordan Chunn
+2900,TE,Dallas Cowboys,Rico Gathers
+2900,WR,Dallas Cowboys,Deonte Thompson
+2800,TE,Dallas Cowboys,Dalton Schultz
+2800,TE,Dallas Cowboys,Blake Jarwin
+7300,WR,Denver Broncos,Emmanuel Sanders
+6600,RB,Denver Broncos,Phillip Lindsay
+5900,QB,Denver Broncos,Case Keenum
+5400,WR,Denver Broncos,Demaryius Thomas
+5300,RB,Denver Broncos,Royce Freeman
+4900,WR,Denver Broncos,Courtland Sutton
+4500,QB,Denver Broncos,Kevin Hogan
+4100,RB,Denver Broncos,Devontae Booker
+3300,TE,Denver Broncos,Jeff Heuerman
+3000,WR,Denver Broncos,Jordan Taylor
+3000,RB,Denver Broncos,Jeremy McNichols
+3000,WR,Denver Broncos,DaeSean Hamilton
+3000,WR,Denver Broncos,Tim Patrick
+3000,WR,Denver Broncos,Jimmy Williams
+3000,RB,Denver Broncos,Andy Janovich
+2900,DST,Denver Broncos,Denver Broncos
+2900,TE,Denver Broncos,Brian Parker
+2900,TE,Denver Broncos,Matt LaCosse
+7000,RB,Detroit Lions,Kerryon Johnson
+6700,WR,Detroit Lions,Golden Tate
+6600,QB,Detroit Lions,Matthew Stafford
+6500,WR,Detroit Lions,Marvin Jones
+5700,WR,Detroit Lions,Kenny Golladay
+4100,QB,Detroit Lions,Matt Cassel
+4000,QB,Detroit Lions,Jake Rudock
+3900,RB,Detroit Lions,LeGarrette Blount
+3500,RB,Detroit Lions,Theo Riddick
+3500,TE,Detroit Lions,Michael Roberts
+3100,RB,Detroit Lions,Ameer Abdullah
+3000,TE,Detroit Lions,Luke Willson
+2900,RB,Detroit Lions,Joel Bouagnon
+2900,RB,Detroit Lions,Nick Bellore
+2900,WR,Detroit Lions,Brandon Powell
+2900,WR,Detroit Lions,Chris Lacy
+2900,WR,Detroit Lions,Andy Jones
+2900,WR,Detroit Lions,TJ Jones
+2800,TE,Detroit Lions,Levine Toilolo
+2800,TE,Detroit Lions,Hakeem Valles
+2700,DST,Detroit Lions,Detroit Lions
+8400,WR,Green Bay Packers,Davante Adams
+7400,QB,Green Bay Packers,Aaron Rodgers
+6000,RB,Green Bay Packers,Aaron Jones
+5600,TE,Green Bay Packers,Jimmy Graham
+4900,QB,Green Bay Packers,DeShone Kizer
+4500,WR,Green Bay Packers,Randall Cobb
+4200,WR,Green Bay Packers,Geronimo Allison
+4000,QB,Green Bay Packers,Tim Boyle
+3800,RB,Green Bay Packers,Jamaal Williams
+3800,WR,Green Bay Packers,Equanimeous St. Brown
+3700,WR,Green Bay Packers,Marquez Valdes-Scantling
+3600,RB,Green Bay Packers,Ty Montgomery
+2900,WR,Green Bay Packers,J’Mon Moore
+2900,RB,Green Bay Packers,Joe Kerridge
+2900,RB,Green Bay Packers,Dan Vitale
+2900,RB,Green Bay Packers,Tra Carson
+2800,TE,Green Bay Packers,Marcedes Lewis
+2800,TE,Green Bay Packers,Robert Tonyan
+2800,TE,Green Bay Packers,Lance Kendricks
+2700,DST,Green Bay Packers,Green Bay Packers
+8500,WR,Houston Texans,DeAndre Hopkins
+6800,QB,Houston Texans,Deshaun Watson
+6400,RB,Houston Texans,Lamar Miller
+5600,WR,Houston Texans,Keke Coutee
+4400,QB,Houston Texans,Joe Webb
+4100,QB,Houston Texans,Brandon Weeden
+3600,RB,Houston Texans,D’Onta Foreman
+3600,RB,Houston Texans,Alfred Blue
+3500,DST,Houston Texans,Houston Texans
+3500,TE,Houston Texans,Jordan Thomas
+3200,WR,Houston Texans,Vyncint Smith
+3000,RB,Houston Texans,Tyler Ervin
+2900,WR,Houston Texans,Isaac Whitney
+2900,TE,Houston Texans,Ryan Griffin
+2900,RB,Houston Texans,Buddy Howell
+2900,WR,Houston Texans,Sammie Coates
+2800,TE,Houston Texans,Jordan Akins
+7200,QB,Indianapolis Colts,Andrew Luck
+7200,WR,Indianapolis Colts,T.Y. Hilton
+6300,RB,Indianapolis Colts,Marlon Mack
+5900,TE,Indianapolis Colts,Eric Ebron
+5000,TE,Indianapolis Colts,Jack Doyle
+4900,QB,Indianapolis Colts,Jacoby Brissett
+4300,RB,Indianapolis Colts,Nyheim Hines
+4300,WR,Indianapolis Colts,Ryan Grant
+3900,WR,Indianapolis Colts,Chester Rogers
+3500,DST,Indianapolis Colts,Indianapolis Colts
+3300,WR,Indianapolis Colts,Zach Pascal
+3100,RB,Indianapolis Colts,Jordan Wilkins
+3000,TE,Indianapolis Colts,Erik Swoope
+2900,WR,Indianapolis Colts,Steve Ishmael
+2900,TE,Indianapolis Colts,Mo Alie-Cox
+2900,RB,Indianapolis Colts,Robert Turbin
+2900,WR,Indianapolis Colts,K.J. Brent
+2900,RB,Indianapolis Colts,Jonathan Williams
+2800,TE,Indianapolis Colts,Ryan Hewitt
+6400,RB,Jacksonville Jaguars,Leonard Fournette
+6200,RB,Jacksonville Jaguars,Carlos Hyde
+5400,RB,Jacksonville Jaguars,T.J. Yeldon
+5200,WR,Jacksonville Jaguars,Keelan Cole
+5100,WR,Jacksonville Jaguars,Dede Westbrook
+5100,QB,Jacksonville Jaguars,Blake Bortles
+5000,QB,Jacksonville Jaguars,Cody Kessler
+4700,WR,Jacksonville Jaguars,Donte Moncrief
+3900,QB,Jacksonville Jaguars,Tanner Lee
+3400,DST,Jacksonville Jaguars,Jacksonville Jaguars
+3300,TE,Jacksonville Jaguars,David Grinnage
+3200,WR,Jacksonville Jaguars,D.J. Chark
+3000,RB,Jacksonville Jaguars,Tommy Bohanon
+2900,WR,Jacksonville Jaguars,Rashad Greene
+2900,WR,Jacksonville Jaguars,Allen Lazard
+2800,TE,Jacksonville Jaguars,James O’Shaughnessy
+2800,TE,Jacksonville Jaguars,Pharoah McKever
+8400,RB,Kansas City Chiefs,Kareem Hunt
+8100,WR,Kansas City Chiefs,Tyreek Hill
+7800,QB,Kansas City Chiefs,Patrick Mahomes
+7000,TE,Kansas City Chiefs,Travis Kelce
+5800,WR,Kansas City Chiefs,Sammy Watkins
+4400,QB,Kansas City Chiefs,Chad Henne
+3900,QB,Kansas City Chiefs,Chase Litton
+3400,WR,Kansas City Chiefs,Chris Conley
+3400,DST,Kansas City Chiefs,Kansas City Chiefs
+3200,RB,Kansas City Chiefs,Spencer Ware
+2900,WR,Kansas City Chiefs,Gehrig Dieter
+2900,RB,Kansas City Chiefs,Darrel Williams
+2900,RB,Kansas City Chiefs,Damien Williams
+2900,WR,Kansas City Chiefs,Demarcus Robinson
+2900,WR,Kansas City Chiefs,Marcus Kemp
+2900,RB,Kansas City Chiefs,Anthony Sherman
+2900,WR,Kansas City Chiefs,Josh Crockett
+2800,TE,Kansas City Chiefs,Deon Yelder
+2800,TE,Kansas City Chiefs,Demetrius Harris
+8500,RB,Los Angeles Chargers,Melvin Gordon
+7700,WR,Los Angeles Chargers,Keenan Allen
+6900,QB,Los Angeles Chargers,Philip Rivers
+5500,WR,Los Angeles Chargers,Tyrell Williams
+5400,RB,Los Angeles Chargers,Austin Ekeler
+4800,WR,Los Angeles Chargers,Mike Williams
+4400,QB,Los Angeles Chargers,Geno Smith
+4000,QB,Los Angeles Chargers,Cardale Jones
+3600,WR,Los Angeles Chargers,Travis Benjamin
+3200,TE,Los Angeles Chargers,Antonio Gates
+3100,DST,Los Angeles Chargers,Los Angeles Chargers
+3000,RB,Los Angeles Chargers,Justin Jackson
+3000,RB,Los Angeles Chargers,Detrez Newsome
+2900,WR,Los Angeles Chargers,Andre Patton
+2900,RB,Los Angeles Chargers,Derek Watt
+2900,WR,Los Angeles Chargers,Dylan Cantrell
+2900,WR,Los Angeles Chargers,Geremy Davis
+2900,TE,Los Angeles Chargers,Virgil Green
+2800,TE,Los Angeles Chargers,Sean Culkin
+9200,RB,Los Angeles Rams,Todd Gurley
+7600,WR,Los Angeles Rams,Brandin Cooks
+7500,WR,Los Angeles Rams,Robert Woods
+7200,QB,Los Angeles Rams,Jared Goff
+6900,WR,Los Angeles Rams,Cooper Kupp
+4000,QB,Los Angeles Rams,Sean Mannion
+4000,QB,Los Angeles Rams,Brandon Allen
+3700,WR,Los Angeles Rams,Josh Reynolds
+3100,RB,Los Angeles Rams,Malcolm Brown
+3100,DST,Los Angeles Rams,Los Angeles Rams
+3000,RB,Los Angeles Rams,John Kelly
+3000,WR,Los Angeles Rams,Khadarel Hodge
+3000,TE,Los Angeles Rams,Tyler Higbee
+3000,TE,Los Angeles Rams,Gerald Everett
+3000,WR,Los Angeles Rams,Nick Williams
+2900,RB,Los Angeles Rams,Justin Davis
+2900,WR,Los Angeles Rams,JoJo Natson
+2800,TE,Los Angeles Rams,Henry Krieger-Coble
+2800,TE,Los Angeles Rams,Johnny Mundt
+6300,RB,Miami Dolphins,Kenyan Drake
+5200,QB,Miami Dolphins,Brock Osweiler
+5000,QB,Miami Dolphins,Ryan Tannehill
+5000,RB,Miami Dolphins,Frank Gore
+4900,WR,Miami Dolphins,Kenny Stills
+4800,WR,Miami Dolphins,Danny Amendola
+4700,WR,Miami Dolphins,DeVante Parker
+4000,QB,Miami Dolphins,David Fales
+3900,WR,Miami Dolphins,Jakeem Grant
+3400,TE,Miami Dolphins,Nick O’Leary
+3300,DST,Miami Dolphins,Miami Dolphins
+3100,TE,Miami Dolphins,Mike Gesicki
+3000,RB,Miami Dolphins,Kalen Ballage
+3000,RB,Miami Dolphins,Brandon Bolden
+2900,WR,Miami Dolphins,Leonte Carroo
+2900,RB,Miami Dolphins,Senorise Perry
+2900,TE,Miami Dolphins,A.J. Derby
+2900,WR,Miami Dolphins,Isaiah Ford
+2800,TE,Miami Dolphins,Durham Smythe
+8800,WR,Minnesota Vikings,Adam Thielen
+7800,WR,Minnesota Vikings,Stefon Diggs
+7300,QB,Minnesota Vikings,Kirk Cousins
+5900,RB,Minnesota Vikings,Dalvin Cook
+5600,RB,Minnesota Vikings,Latavius Murray
+4700,TE,Minnesota Vikings,Kyle Rudolph
+4400,QB,Minnesota Vikings,Trevor Siemian
+3900,QB,Minnesota Vikings,Kyle Sloter
+3500,WR,Minnesota Vikings,Laquon Treadwell
+3300,DST,Minnesota Vikings,Minnesota Vikings
+3100,RB,Minnesota Vikings,Roc Thomas
+3000,WR,Minnesota Vikings,Aldrick Robinson
+3000,RB,Minnesota Vikings,Mike Boone
+2900,WR,Minnesota Vikings,Jeff Badet
+2900,WR,Minnesota Vikings,Brandon Zylstra
+2900,RB,Minnesota Vikings,C.J. Ham
+2900,WR,Minnesota Vikings,Chad Beebe
+2800,TE,Minnesota Vikings,Cole Hikutini
+2800,TE,Minnesota Vikings,Tyler Conklin
+2800,TE,Minnesota Vikings,David Morgan
+7700,RB,New England Patriots,James White
+7400,QB,New England Patriots,Tom Brady
+7100,WR,New England Patriots,Julian Edelman
+6800,WR,New England Patriots,Josh Gordon
+6800,RB,New England Patriots,Sony Michel
+6500,TE,New England Patriots,Rob Gronkowski
+5000,WR,New England Patriots,Chris Hogan
+4200,QB,New England Patriots,Brian Hoyer
+3900,QB,New England Patriots,Danny Etling
+3300,RB,New England Patriots,Kenjon Barner
+3100,WR,New England Patriots,Phillip Dorsett
+3100,WR,New England Patriots,Cordarrelle Patterson
+3000,DST,New England Patriots,New England Patriots
+2900,WR,New England Patriots,Cody Hollister
+2900,RB,New England Patriots,James Develin
+2900,WR,New England Patriots,Matthew Slater
+2900,TE,New England Patriots,Dwayne Allen
+2800,TE,New England Patriots,Stephen Anderson
+2800,TE,New England Patriots,Jacob Hollister
+8300,RB,New Orleans Saints,Alvin Kamara
+8300,WR,New Orleans Saints,Michael Thomas
+7300,QB,New Orleans Saints,Drew Brees
+6700,RB,New Orleans Saints,Mark Ingram
+4900,QB,New Orleans Saints,Teddy Bridgewater
+4900,QB,New Orleans Saints,Taysom Hill
+4200,WR,New Orleans Saints,Tre’Quan Smith
+3900,TE,New Orleans Saints,Benjamin Watson
+3200,WR,New Orleans Saints,Cameron Meredith
+2900,DST,New Orleans Saints,New Orleans Saints
+2900,WR,New Orleans Saints,Austin Carr
+2900,WR,New Orleans Saints,Keith Kirkwood
+2900,RB,New Orleans Saints,Dwayne Washington
+2900,RB,New Orleans Saints,Zach Line
+2900,WR,New Orleans Saints,Dan Arnold
+2900,RB,New Orleans Saints,Daniel Lasco
+2800,TE,New Orleans Saints,Josh Hill
+2800,TE,New Orleans Saints,Garrett Griffin
+8500,WR,New York Giants,Odell Beckham
+8500,RB,New York Giants,Saquon Barkley
+6300,WR,New York Giants,Sterling Shepard
+5800,TE,New York Giants,Evan Engram
+5600,QB,New York Giants,Eli Manning
+4900,QB,New York Giants,Kyle Lauletta
+4000,QB,New York Giants,Alex Tanney
+3200,RB,New York Giants,Wayne Gallman
+3100,TE,New York Giants,Rhett Ellison
+3000,WR,New York Giants,Russell Shepard
+2900,RB,New York Giants,Elijhaa Penny
+2900,WR,New York Giants,Jawill Davis
+2900,RB,New York Giants,Paul Perkins
+2900,WR,New York Giants,Alonzo Russell
+2900,RB,New York Giants,Jhurell Pressley
+2800,TE,New York Giants,Scott Simonson
+2800,DST,New York Giants,New York Giants
+5600,RB,New York Jets,Isaiah Crowell
+5400,QB,New York Jets,Sam Darnold
+4900,QB,New York Jets,Josh McCown
+4600,WR,New York Jets,Robby Anderson
+4500,WR,New York Jets,Quincy Enunwa
+4400,QB,New York Jets,Davis Webb
+4000,TE,New York Jets,Chris Herndon
+3900,WR,New York Jets,Jermaine Kearse
+3700,RB,New York Jets,Elijah McGuire
+3500,WR,New York Jets,Deontay Burnett
+3400,RB,New York Jets,Trenton Cannon
+3200,DST,New York Jets,New York Jets
+3200,WR,New York Jets,Terrelle Pryor
+3000,WR,New York Jets,Rishard Matthews
+3000,RB,New York Jets,De’Angelo Henderson
+3000,WR,New York Jets,Andre Roberts
+2900,WR,New York Jets,J.J. Jones
+2900,WR,New York Jets,Charone Peake
+2900,WR,New York Jets,Neal Sterling
+2800,TE,New York Jets,Jordan Leggett
+2800,TE,New York Jets,Eric Tomlinson
+6800,TE,Oakland Raiders,Jared Cook
+6000,QB,Oakland Raiders,Derek Carr
+6000,RB,Oakland Raiders,Doug Martin
+5400,RB,Oakland Raiders,Jalen Richard
+4900,WR,Oakland Raiders,Jordy Nelson
+4500,QB,Oakland Raiders,AJ McCarron
+4300,WR,Oakland Raiders,Brandon LaFell
+3500,WR,Oakland Raiders,Seth Roberts
+3000,RB,Oakland Raiders,Keith Smith
+3000,RB,Oakland Raiders,DeAndre Washington
+3000,WR,Oakland Raiders,Martavis Bryant
+2900,WR,Oakland Raiders,Saeed Blacknall
+2900,RB,Oakland Raiders,Ryan Yurachek
+2900,WR,Oakland Raiders,Marcell Ateman
+2900,WR,Oakland Raiders,Dwayne Harris
+2900,WR,Oakland Raiders,Johnny Holton
+2800,TE,Oakland Raiders,Derek Carrier
+2800,TE,Oakland Raiders,Lee Smith
+2800,TE,Oakland Raiders,Paul Butler
+2800,DST,Oakland Raiders,Oakland Raiders
+7200,WR,Philadelphia Eagles,Alshon Jeffery
+7000,TE,Philadelphia Eagles,Zach Ertz
+6900,QB,Philadelphia Eagles,Carson Wentz
+5400,WR,Philadelphia Eagles,Nelson Agholor
+5300,RB,Philadelphia Eagles,Corey Clement
+5300,RB,Philadelphia Eagles,Wendell Smallwood
+4900,QB,Philadelphia Eagles,Nick Foles
+4400,QB,Philadelphia Eagles,Nate Sudfeld
+4000,RB,Philadelphia Eagles,Josh Adams
+3500,TE,Philadelphia Eagles,Dallas Goedert
+3300,DST,Philadelphia Eagles,Philadelphia Eagles
+3100,WR,Philadelphia Eagles,Jordan Matthews
+3100,RB,Philadelphia Eagles,Darren Sproles
+3000,WR,Philadelphia Eagles,Shelton Gibson
+2900,WR,Philadelphia Eagles,Braxton Miller
+2900,WR,Philadelphia Eagles,Dorren Miller
+2900,TE,Philadelphia Eagles,Josh Perkins
+2900,WR,Philadelphia Eagles,DeAndre Carter
+2900,WR,Philadelphia Eagles,Kamar Aiken
+2900,RB,Philadelphia Eagles,Donnel Pumphrey
+2800,TE,Philadelphia Eagles,Billy Brown
+8600,WR,Pittsburgh Steelers,Antonio Brown
+8200,RB,Pittsburgh Steelers,James Conner
+7400,WR,Pittsburgh Steelers,JuJu Smith-Schuster
+7300,RB,Pittsburgh Steelers,Le’Veon Bell
+6500,QB,Pittsburgh Steelers,Ben Roethlisberger
+4300,TE,Pittsburgh Steelers,Vance McDonald
+3900,QB,Pittsburgh Steelers,Joshua Dobbs
+3900,QB,Pittsburgh Steelers,Mason Rudolph
+3100,TE,Pittsburgh Steelers,Jesse James
+3000,WR,Pittsburgh Steelers,Ryan Switzer
+3000,WR,Pittsburgh Steelers,James Washington
+3000,DST,Pittsburgh Steelers,Pittsburgh Steelers
+3000,RB,Pittsburgh Steelers,Trey Edmunds
+3000,WR,Pittsburgh Steelers,Justin Hunter
+2900,WR,Pittsburgh Steelers,Darrius Heyward-Bey
+2900,RB,Pittsburgh Steelers,Roosevelt Nix
+2900,WR,Pittsburgh Steelers,Eli Rogers
+2900,RB,Pittsburgh Steelers,Jaylen Samuels
+2900,WR,Pittsburgh Steelers,Tevin Jones
+2900,WR,Pittsburgh Steelers,Trey Griffey
+2900,RB,Pittsburgh Steelers,Stevan Ridley
+2800,TE,Pittsburgh Steelers,Bucky Hodges
+2800,TE,Pittsburgh Steelers,Xavier Grimble
+2800,TE,Pittsburgh Steelers,Christian Scotland-Williamson
+7100,RB,Seattle Seahawks,Chris Carson
+7100,QB,Seattle Seahawks,Russell Wilson
+6600,WR,Seattle Seahawks,Tyler Lockett
+6000,WR,Seattle Seahawks,Doug Baldwin
+4300,QB,Seattle Seahawks,Brett Hundley
+3900,QB,Seattle Seahawks,Alex McGough
+3700,TE,Seattle Seahawks,Ed Dickson
+3700,RB,Seattle Seahawks,Mike Davis
+3500,TE,Seattle Seahawks,Nick Vannett
+3500,RB,Seattle Seahawks,Rashaad Penny
+3400,WR,Seattle Seahawks,David Moore
+3000,RB,Seattle Seahawks,C.J. Prosise
+3000,DST,Seattle Seahawks,Seattle Seahawks
+3000,WR,Seattle Seahawks,Brandon Marshall
+2900,WR,Seattle Seahawks,Jaron Brown
+2900,WR,Seattle Seahawks,Keenan Reynolds
+2900,RB,Seattle Seahawks,Tre Madden
+2900,WR,Seattle Seahawks,Caleb Scott
+2900,WR,Seattle Seahawks,Malik Turner
+2800,TE,Seattle Seahawks,Darrell Daniels
+6900,TE,San Francisco 49ers,George Kittle
+6100,RB,San Francisco 49ers,Matt Breida
+5700,WR,San Francisco 49ers,Marquise Goodwin
+5300,QB,San Francisco 49ers,C.J. Beathard
+4400,RB,San Francisco 49ers,Alfred Morris
+3900,QB,San Francisco 49ers,Nick Mullens
+3800,WR,San Francisco 49ers,Pierre Garcon
+3700,RB,San Francisco 49ers,Raheem Mostert
+3400,RB,San Francisco 49ers,Kyle Juszczyk
+3300,WR,San Francisco 49ers,Kendrick Bourne
+3100,WR,San Francisco 49ers,Trent Taylor
+3000,WR,San Francisco 49ers,Dante Pettis
+2900,RB,San Francisco 49ers,Jeff Wilson
+2900,WR,San Francisco 49ers,Victor Bolden
+2900,TE,San Francisco 49ers,Garrett Celek
+2900,WR,San Francisco 49ers,Richie James
+2900,DST,San Francisco 49ers,San Francisco 49ers
+2900,WR,San Francisco 49ers,Steven Dunbar
+2800,TE,San Francisco 49ers,Cole Wick
+2800,TE,San Francisco 49ers,Ross Dwelley
+8000,WR,Tampa Bay Buccaneers,Mike Evans
+6100,QB,Tampa Bay Buccaneers,Ryan Fitzpatrick
+5800,RB,Tampa Bay Buccaneers,Peyton Barber
+5300,WR,Tampa Bay Buccaneers,DeSean Jackson
+5300,QB,Tampa Bay Buccaneers,Jameis Winston
+5300,TE,Tampa Bay Buccaneers,O.J. Howard
+5100,WR,Tampa Bay Buccaneers,Chris Godwin
+4000,TE,Tampa Bay Buccaneers,Cameron Brate
+4000,RB,Tampa Bay Buccaneers,Ronald Jones
+3900,QB,Tampa Bay Buccaneers,Ryan Griffin
+3400,RB,Tampa Bay Buccaneers,Jacquizz Rodgers
+3200,WR,Tampa Bay Buccaneers,Adam Humphries
+2900,RB,Tampa Bay Buccaneers,Alan Cross
+2900,RB,Tampa Bay Buccaneers,Shaun Wilson
+2900,WR,Tampa Bay Buccaneers,Justin Watson
+2900,WR,Tampa Bay Buccaneers,Bobo Wilson
+2900,WR,Tampa Bay Buccaneers,Damoun Patterson
+2800,TE,Tampa Bay Buccaneers,Tanner Hudson
+2800,TE,Tampa Bay Buccaneers,Antony Auclair
+2500,DST,Tampa Bay Buccaneers,Tampa Bay Buccaneers
+6400,WR,Tennessee Titans,Corey Davis
+5300,QB,Tennessee Titans,Marcus Mariota
+4900,QB,Tennessee Titans,Blaine Gabbert
+4700,RB,Tennessee Titans,Derrick Henry
+4600,RB,Tennessee Titans,Dion Lewis
+4600,WR,Tennessee Titans,Tajae Sharpe
+3700,WR,Tennessee Titans,Taywan Taylor
+3000,TE,Tennessee Titans,Jonnu Smith
+3000,WR,Tennessee Titans,Roger Lewis
+2900,TE,Tennessee Titans,Anthony Firkser
+2900,WR,Tennessee Titans,Darius Jennings
+2900,WR,Tennessee Titans,Devin Ross
+2900,WR,Tennessee Titans,Cam Batson
+2900,RB,Tennessee Titans,Dalyn Dawkins
+2900,RB,Tennessee Titans,David Fluellen
+2800,TE,Tennessee Titans,MyCole Pruitt
+2800,TE,Tennessee Titans,Luke Stocker
+2800,DST,Tennessee Titans,Tennessee Titans
+7400,RB,Washington Redskins,Adrian Peterson
+6300,QB,Washington Redskins,Alex Smith
+5500,RB,Washington Redskins,Chris Thompson
+4900,TE,Washington Redskins,Jordan Reed
+4300,WR,Washington Redskins,Jamison Crowder
+4000,QB,Washington Redskins,Colt McCoy
+4000,WR,Washington Redskins,Josh Doctson
+3900,WR,Washington Redskins,Paul Richardson
+3400,TE,Washington Redskins,Vernon Davis
+3300,RB,Washington Redskins,Kapri Bibbs
+3300,WR,Washington Redskins,Maurice Harris
+3200,DST,Washington Redskins,Washington Redskins
+3000,WR,Washington Redskins,Brian Quick
+3000,RB,Washington Redskins,Samaje Perine
+2900,WR,Washington Redskins,Simmie Cobbs
+2900,WR,Washington Redskins,Michael Floyd
+2900,WR,Washington Redskins,Jehu Chesson
+2900,RB,Washington Redskins,Mack Brown
+2900,WR,Washington Redskins,Darvin Kidsy
+2800,TE,Washington Redskins,J.P. Holtz
+2800,TE,Washington Redskins,Matt Flanagan
+2800,TE,Washington Redskins,Jeremy Sprinkle

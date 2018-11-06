@@ -11,19 +11,22 @@ import java.util.Scanner;
 import dataCollection.ReadFiles;
 
 public class NFL {
-	public static Map <String,String> schedule;
-	public List<Integer> numGames;
-	public static Map <String,Team> teams;
+	private static Map <String,String> schedule;
+	private List<Integer> numGames;
+	private static Map <String,Team> teams;
+	private static Map <String,ArrayList<Player>> players;
+	private static Map <Integer, String> teamNames;
 	
 	public NFL() {
 		schedule = new HashMap<String,String>();
 		numGames = new ArrayList<Integer>();
 		teams = new HashMap<String,Team>();
 	}
-	public void buildNFL (String[]args) throws FileNotFoundException {
+	public void buildNFL () throws FileNotFoundException {
 		int count = 1; 
 		String Week = null;
-		Scanner in = new Scanner(new File(args[0]));
+		File location  = new File("");
+		Scanner in = new Scanner(new File(location.getAbsolutePath() +"/src/input_files/NFL_Schedule.txt"));
 		while (in.hasNextLine()){
 			String line = in.nextLine();
 			String[] feilds = line.split(",");
@@ -54,10 +57,10 @@ public class NFL {
 		
 	}
 	
-	public static void teamComparison(int week, int match, String[]args) throws FileNotFoundException {
+	public static void teamComparison(int week, int match) throws FileNotFoundException {
 		ReadFiles makingTeam = new ReadFiles();
-		makingTeam.readTeamRanks(args);
-		teams = makingTeam.getTeamsMap();
+		makingTeam.readTeamRanks();
+		teams = makingTeam.getTeamInfoMap();
 		String x = schedule.get("Week "+ week + ":G" + match);
 		String w = x.split(" @ ")[0];
 		String f = x.split(" @ ")[1].substring(1, x.split(" @ ")[1].length());
@@ -389,5 +392,27 @@ public class NFL {
 		}
 	}
 	
+	public void printTeamPlayers(int i, int x) throws FileNotFoundException {
+		ReadFiles playerMap = new ReadFiles();
+		playerMap.readPlayerStats();
+		players = playerMap.getPlayerMap();
+		teamNames = playerMap.getTeamMap();
+		ArrayList<Player> player;
+		player = new ArrayList<Player>();
+		
+		if (x == 0) {
+			System.out.println("Player Name\tPosition");
+		player = players.get(teamNames.get(i));
+		for (int y = 0; y < player.size(); ++y) {
+		System.out.println((y+1) + " " +player.get(y).getName()+"\t"+player.get(y).getPosition());
+		}
+		}
+		else {
+		System.out.println("Name\tPosition\tPlayer Cost\tTeam");	
+		System.out.println(player.get(x-1).getName()+"\t"+player.get(x-1).getPosition()+ "\t" + player.get(x-1).getPlayerCost() +"\t"+ player.get(x-1).getTeam());
+		}
+		}
+		
+		
+	}
 	
-}
