@@ -392,6 +392,15 @@ public class NFL {
 		}
 	}
 	
+	public void printTeamList() throws FileNotFoundException {
+		ReadFiles playerMap = new ReadFiles();
+		playerMap.readPlayerStats();
+		teamNames = playerMap.getTeamMap();
+		for (int x = 1; x < teamNames.size(); ++x) {
+		  System.out.println(x + " " + teamNames.get(x));
+		}
+	}
+	
 	public void printTeamPlayers(int i, int x) throws FileNotFoundException {
 		ReadFiles playerMap = new ReadFiles();
 		playerMap.readPlayerStats();
