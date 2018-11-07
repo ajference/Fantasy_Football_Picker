@@ -2,6 +2,7 @@ package nfl;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -22,8 +23,12 @@ public class Driver1 {
 	int firstTime = 0;
 	int week = 0;
 	int match = 0;
+	int teamguru = 0;
+	int posRev = 0;
+	int teamComp = 0;
 	Scanner scan = new Scanner (System.in);
 	String[] Current = new String[8];
+	String[] myTeam = new String[8];
 	while(back == 0) {
 		back = 1;
 		week = 0;
@@ -75,7 +80,10 @@ public class Driver1 {
 				while (back == 2) {
 
 					System.out.println("Enter a Match you want to view or enter 35 to go choose a different week or 40 to go back to main screen");
-					weekchooser = scan.nextInt();
+					weekchooser =  scan.nextInt();
+					if (weekchooser != (int)weekchooser) {
+						weekchooser  = 100;
+					}
 					
 					if(weekchooser == 40) {
 						g = 0; 
@@ -145,18 +153,46 @@ public class Driver1 {
 		}
 		
 		if(g == 3) {	//Team Maker
-			System.out.println("Lets make a Team\n");
-			System.out.println("Enter 1 to go back to main screen");
-			weekchooser = scan.nextInt();
-			if(weekchooser == 1) {
-				g = 0; 
-				back = 0;
-				destination = scan.nextLine();
+			while(back == 1) {
+				if(firstTime == 1 && teamComp == 0) {
+					System.out.println("It looks like you have already used Pick Guru, do you want to use the Same team? 1 for yes, 2 for no");
+					weekchooser = scan.nextInt();
+					if(weekchooser == 1) {
+						myTeam = Current;
+					}
+					else if(weekchooser == 2) {
+						teamguru = 1;
+					}
+					else {
+						System.out.println("Enter a Valid Choice");
+					}
+				}
+				
+				if(teamguru == 1 || firstTime == 0)
+				System.out.println("Lets make a Team\n");
+				firstTime = 1;
+				if(posRev == 1  || teamComp == 0) {
+				System.out.println("Selecting a QB\n Pick A QB from the List of All available QBs");
+				//Print out QB List
+				
+				myTeam[0] = "What Ever QB they Pick";
+				}
+				//Repeat for all other possitions
+				
+				System.out.println("Your Team is now Complete, Enter 1 to go back to main screen or Select a possition to change 1 for QB 2 for Rb 3 for WR ...");
+				teamComp = 1;
+				weekchooser = scan.nextInt();
+				if(weekchooser == 1) {
+					g = 0; 
+					back = 0;
+					destination = scan.nextLine();
+				}
 			}
 			
 		}
 		if(g == 4) {	//Top Players
 			System.out.println("These are this weeks top players!");
+			NFL.printTeamPlayers(7,0);
 			System.out.println("Enter 1 to go back to main screen");
 			weekchooser = scan.nextInt();
 			if(weekchooser == 1) {
@@ -168,6 +204,23 @@ public class Driver1 {
 		}
 	}
 		}
+	
+//	public boolean stringCheck() {
+//	Scanner testscan = new Scanner(System.in);
+//	int test; 
+//	    try
+//	    {
+//	        test = testscan.nextInt();
+//	        return false;
+//	    } catch (InputMismatchException ex)
+//	    {
+//	        return true;
+//	    }
+//	}
+	
+	
+	
+	
 }
 	
 	
