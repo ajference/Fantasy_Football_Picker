@@ -14,6 +14,7 @@ import dataCollection.ReadFiles;
 public class NFL {
 	private static Map <String,String> schedule;
 	private List<Integer> numGames;
+	private static ArrayList <Player> playerList;
 	private static Map <String,Team> teams;
 	private static Map <String,ArrayList<Player>> players;
 	private static Map <Integer, String> teamNames;
@@ -26,6 +27,7 @@ public class NFL {
 		schedule = new HashMap<String,String>();
 		numGames = new ArrayList<Integer>();
 		teams = new HashMap<String,Team>();
+		playerList = new ArrayList<Player>();
 	}
 	public void buildNFL () throws FileNotFoundException {
 		int count = 1; 
@@ -440,21 +442,30 @@ public class NFL {
 		teamPositions = positionMap.getTeamPositions();
 		teamNames = positionMap.getTeamMap();
 		
-		ArrayList<Player> playerList = new ArrayList<Player>();
+		playerList = new ArrayList<Player>();
 		
 		if (team == 0) {
+			if (position == 0) {
+				Collections.sort(playerList); 
+				playerList = positionMap.getPlayerList();
+				for (int x = 0; x <  playerList.size(); ++x) {
+					System.out.println((x+1)+ " " + playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+				}
+			}
+			else {
 			playerList = playerPositions.get(positionName[position + 4]);
 			Collections.sort(playerList);   
 			//System.out.println("The List of "+ positionName[position-1]+ " players");
 			if (numPlayers < playerList.size()) {
 			for (int x = 0; x < numPlayers; ++x) {
-				System.out.println(playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+				System.out.println((x+1)+ " " +playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
 			}
 			}
 			else {
 				for (int x = 0; x <  playerList.size(); ++x) {
-					System.out.println(playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+					System.out.println((x+1)+ " " + playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
 				}
+			}
 			}
 		}
 		else {
@@ -463,18 +474,18 @@ public class NFL {
 			//System.out.println("The list of "+ positionName[position - 1] + " players for the "+teamNames.get(team)+"s");
 			if (numPlayers < playerList.size()) {
 				for (int x = 0; x < numPlayers; ++x) {
-					System.out.println(playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+					System.out.println((x+1)+ " " + playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
 				}
 			}
 			else {
 			for (int x = 0; x < playerList.size(); ++x) {
-				System.out.println(playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+				System.out.println((x+1)+ " " + playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
 			}
-			}
-			
+			}	
 		}
-		
-		
+	}
+	public static Player getPlayer(int i) {
+		return playerList.get(i);
 	}
 		
 	}

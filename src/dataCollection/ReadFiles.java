@@ -20,6 +20,7 @@ public class ReadFiles {
 	Map <String, HashMap<String, ArrayList<Player>>> TeamPositions;
 	HashMap<String, ArrayList<Player>> innerHash;
 	Map <String,ArrayList<Player>> PlayerPositions;
+	ArrayList<Player> allPlayers;
 	
 	
 	
@@ -95,23 +96,24 @@ public class ReadFiles {
 			tempPlayer.setPosition(fields[1]);
 			tempPlayer.setTeam(fields[2]);
 			tempPlayer.setName(fields[3]);
-			if (fields[1] == "TE") {
+			allPlayers.add(tempPlayer);
+			if (fields[1].compareTo("TE") == 0) {
 				TotalTE.add(tempPlayer);
 				
 			}
-			else if (fields[1] == "RB") {
+			else if (fields[1].compareTo("RB") == 0) {
 				TotalRB.add(tempPlayer);
 				
 			}
-			else if (fields[1] == "WR") {
+			else if (fields[1].compareTo("WR") == 0) {
 				TotalWR.add(tempPlayer);
 				
 			}
-			else if (fields[1] == "QB") {
+			else if (fields[1].compareTo("QB") == 0) {
 				TotalQB.add(tempPlayer);
 				
 			}
-			else if (fields[1] == "DST") {
+			else if (fields[1].compareTo("DST") == 0) {
 				TotalDST.add(tempPlayer);
 				
 			}
@@ -124,19 +126,19 @@ public class ReadFiles {
 					te.add(tempPlayer);
 					
 				}
-				else if (fields[1] == "RB") {
+				else if (fields[1].compareTo("RB") == 0) {
 					rb.add(tempPlayer);
 					
 				}
-				else if (fields[1] == "WR") {
+				else if (fields[1].compareTo("WR") == 0) {
 					wr.add(tempPlayer);
 					
 				}
-				else if (fields[1] == "QB") {
+				else if (fields[1].compareTo("QB") == 0) {
 					qb.add(tempPlayer);
 					
 				}
-				else if (fields[1] == "DST") {
+				else if (fields[1].compareTo("DST") == 0) {
 					dst.add(tempPlayer);
 					
 				}
@@ -163,19 +165,19 @@ public class ReadFiles {
 					te.add(tempPlayer);
 					
 				}
-				else if (fields[1] == "RB") {
+				else if (fields[1].compareTo("RB") == 0) {
 					rb.add(tempPlayer);
 					
 				}
-				else if (fields[1] == "WR") {
+				else if (fields[1].compareTo("WR") == 0) {
 					wr.add(tempPlayer);
 					
 				}
-				else if (fields[1] == "QB") {
+				else if (fields[1].compareTo("QB") == 0) {
 					qb.add(tempPlayer);
 					
 				}
-				else if (fields[1] == "DST") {
+				else if (fields[1].compareTo("DST") == 0) {
 					dst.add(tempPlayer);
 					
 				}
@@ -204,5 +206,7 @@ public class ReadFiles {
 		return PlayerPositions;
 	}
 	
-	
+	public ArrayList<Player> getPlayerList() {
+		return allPlayers;
+	}
 }

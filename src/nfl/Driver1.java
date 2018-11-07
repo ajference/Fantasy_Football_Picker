@@ -21,14 +21,15 @@ public class Driver1 {
 	int back = 0;
 	int weekchooser = 0;
 	int firstTime = 0;
+	int firstTimet = 0;
 	int week = 0;
 	int match = 0;
 	int teamguru = 0;
 	int posRev = 0;
 	int teamComp = 0;
 	Scanner scan = new Scanner (System.in);
-	String[] Current = new String[8];
-	String[] myTeam = new String[8];
+	ArrayList<Player> Current = new ArrayList<Player>();
+	ArrayList<Player> myTeam = new ArrayList<Player>();
 	while(back == 0) {
 		back = 1;
 		week = 0;
@@ -108,12 +109,12 @@ public class Driver1 {
 			}
 		
 		if(g == 2) {	//PickGUru
-			String[] Temp = {"JO", "Momma", "is", "so", "nice"};
-			String[] guru = new String[8];
+			//String[] Temp = {"JO", "Momma", "is", "so", "nice"};
+			ArrayList<Player> guru = new ArrayList<Player>();
 			
 			while(back == 1) {
 				if(firstTime == 1) {
-					System.out.println("Your Current team is " + Current[0] + " " + Current[1]);
+
 					System.out.println("Do you want to select a new team? 1 for yes of 2 to go back to main screen");
 					weekchooser = scan.nextInt();
 					if(weekchooser == 1) {
@@ -127,13 +128,15 @@ public class Driver1 {
 					
 				}
 				if(firstTime == 0) {
-					System.out.println("Welcome to Pick Guru\nTime To Make a Team!\nLet's Start with The QuarterBack\nChoose 1 of the top 5 quarterbacks\n1 JO\n2 Momma\n3 is\n4 so\n5 nice\n");
+					System.out.println("Welcome to Pick Guru\nTime To Make a Team!\nLet's Start with The QuarterBack\nChoose 1 of the top 5 quarterbacks");
+					NFL.printPlayerPosition(0, 4, 5);
 					weekchooser = scan.nextInt();
-					guru[0] = Temp[weekchooser -1];
-					System.out.println("Now time to Pick a Running Back Pick, Choose 1 of these 5 Runnings backs\n1 JO\n2 Momma\n3 is\n4 so\n5 nice\n ");
+					guru.add(NFL.getPlayer(weekchooser - 1));
+					System.out.println("Now time to Pick a Running Back Pick, Choose 1 of these 5 Runnings backs");
+					NFL.printPlayerPosition(0, 3, 5);
 					weekchooser = scan.nextInt();
-					guru[1] = Temp[weekchooser -1];
-					System.out.println("The team you selected is " + guru[0] + " " + guru[1]);
+					guru.add(NFL.getPlayer(weekchooser - 1));
+					System.out.println("The team you selected is " + guru.get(0).getName() + " " + guru.get(1).getName());
 					firstTime = 1;
 					Current = guru;
 					
@@ -159,6 +162,7 @@ public class Driver1 {
 					weekchooser = scan.nextInt();
 					if(weekchooser == 1) {
 						myTeam = Current;
+						teamComp = 1;
 					}
 					else if(weekchooser == 2) {
 						teamguru = 1;
@@ -168,14 +172,14 @@ public class Driver1 {
 					}
 				}
 				
-				if(teamguru == 1 || firstTime == 0)
+				if(teamguru == 1 && firstTimet == 0)
 				System.out.println("Lets make a Team\n");
-				firstTime = 1;
+				firstTimet = 1;
 				if(posRev == 1  || teamComp == 0) {
-				System.out.println("Selecting a QB\n Pick A QB from the List of All available QBs");
+					System.out.println("Selecting a QB\n Pick A QB from the List of All available QBs");
 				//Print out QB List
 				
-				myTeam[0] = "What Ever QB they Pick";
+				//myTeam[0] = "What Ever QB they Pick";
 				}
 				//Repeat for all other possitions
 				

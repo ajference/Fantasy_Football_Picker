@@ -53,13 +53,13 @@ public class Player implements Comparable<Player> {
 	@Override
 	  public int compareTo(Player player) {  
 		if (this.getPlayerCost() < player.getPlayerCost()) {
-			return -1; 
+			return 1; 
 		}
 		else if (this.getPlayerCost() == player.getPlayerCost()){
 			return 0;
 		}
 		else {
-			return 1;
+			return -1;
 		}
 		   
 		  }  
