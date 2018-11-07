@@ -1,6 +1,6 @@
 package nfl;
 
-public class Player {
+public class Player implements Comparable<Player> {
 	String name;
 	String team;
 	String position;
@@ -50,11 +50,18 @@ public class Player {
 	public String getTeam() {
 		return this.team;
 	}
-	
+	@Override
 	  public int compareTo(Player player) {  
-		  
-		    return (this.getPlayerCost() < player.getPlayerCost() ? -1 : 
-		            (this.getPlayerCost() == player.getPlayerCost() ? 0 : 1));
+		if (this.getPlayerCost() < player.getPlayerCost()) {
+			return -1; 
+		}
+		else if (this.getPlayerCost() == player.getPlayerCost()){
+			return 0;
+		}
+		else {
+			return 1;
+		}
+		   
 		  }  
 	
 	

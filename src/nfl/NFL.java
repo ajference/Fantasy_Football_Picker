@@ -3,6 +3,7 @@ package nfl;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -443,7 +444,7 @@ public class NFL {
 		
 		if (team == 0) {
 			playerList = playerPositions.get(positionName[position + 4]);
-			//playerList.getPlayerCost().sort();   sort the player list 
+			Collections.sort(playerList);   
 			//System.out.println("The List of "+ positionName[position-1]+ " players");
 			if (numPlayers < playerList.size()) {
 			for (int x = 0; x < numPlayers; ++x) {
@@ -458,7 +459,7 @@ public class NFL {
 		}
 		else {
 			playerList = teamPositions.get(teamNames.get(team)).get(positionName[position + 4]);
-			//sort the player stuff 
+			Collections.sort(playerList);  
 			//System.out.println("The list of "+ positionName[position - 1] + " players for the "+teamNames.get(team)+"s");
 			if (numPlayers < playerList.size()) {
 				for (int x = 0; x < numPlayers; ++x) {
