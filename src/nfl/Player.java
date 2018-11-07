@@ -33,7 +33,7 @@ public class Player {
 	public void setPlayerCost(int i) {
 		playerCost = i;
 	}
-	public int getPlayerCost( ) {
+	public int getPlayerCost() {
 		return playerCost;
 	}
 	public void setPosition(String i) {
@@ -50,5 +50,12 @@ public class Player {
 	public String getTeam() {
 		return this.team;
 	}
+	
+	  public int compareTo(Player player) {  
+		  
+		    return (this.getPlayerCost() < player.getPlayerCost() ? -1 : 
+		            (this.getPlayerCost() == player.getPlayerCost() ? 0 : 1));
+		  }  
+	
 	
 }

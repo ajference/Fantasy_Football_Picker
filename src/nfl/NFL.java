@@ -16,8 +16,12 @@ public class NFL {
 	private static Map <String,Team> teams;
 	private static Map <String,ArrayList<Player>> players;
 	private static Map <Integer, String> teamNames;
+	private static Map <String,ArrayList<Player>> playerPositions;
+	private static Map <String, HashMap<String, ArrayList<Player>>> teamPositions;
 	
 	public NFL() {
+		playerPositions = new HashMap <String,ArrayList<Player>>();
+		teamPositions = new HashMap <String, HashMap<String, ArrayList<Player>>>();
 		schedule = new HashMap<String,String>();
 		numGames = new ArrayList<Integer>();
 		teams = new HashMap<String,Team>();
@@ -401,7 +405,7 @@ public class NFL {
 		}
 	}
 	
-	public void printTeamPlayers(int i, int x) throws FileNotFoundException {
+	public static void printTeamPlayers(int team, int person) throws FileNotFoundException {
 		ReadFiles playerMap = new ReadFiles();
 		playerMap.readPlayerStats();
 		players = playerMap.getPlayerMap();
@@ -409,19 +413,68 @@ public class NFL {
 		ArrayList<Player> player;
 		player = new ArrayList<Player>();
 		
-		if (x == 0) {
+		if (person == 0) {
 			System.out.println("Player Name\tPosition");
-		player = players.get(teamNames.get(i));
+		player = players.get(teamNames.get(team));
 		for (int y = 0; y < player.size(); ++y) {
 		System.out.println((y+1) + " " +player.get(y).getName()+"\t"+player.get(y).getPosition());
 		}
 		}
 		else {
 		System.out.println("Name\tPosition\tPlayer Cost\tTeam");	
-		System.out.println(player.get(x-1).getName()+"\t"+player.get(x-1).getPosition()+ "\t" + player.get(x-1).getPlayerCost() +"\t"+ player.get(x-1).getTeam());
+		System.out.println(player.get(person-1).getName()+"\t"+player.get(person-1).getPosition()+ "\t" + player.get(person-1).getPlayerCost() +"\t"+ player.get(person-1).getTeam());
 		}
+		}
+	
+	public void printPositonList() {
+		System.out.println("1 Tight End\n2 Wide receivers\n3 Running Back\n4 Quarterback\n5 Defense and Special Teams");
+	}
+		
+	public static void printPlayerPosition(int team, int position, int numPlayers) throws FileNotFoundException {
+		ReadFiles positionMap = new ReadFiles();
+		positionMap.readPlayerStats();
+		positionMap.readTeamRanks();
+		String[] positionName = new String[]{"Tight End", " Wide receivers","Running Back","Quarterback","Defense and Special Teams", "TE", "WR", "RB", "QB", "DST"}; 
+		playerPositions = positionMap.getPlayerPositions();
+		teamPositions = positionMap.getTeamPositions();
+		teamNames = positionMap.getTeamMap();
+		
+		ArrayList<Player> playerList = new ArrayList<Player>();
+		
+		if (team == 0) {
+			playerList = playerPositions.get(positionName[position + 4]);
+			//playerList.getPlayerCost().sort();   sort the player list 
+			//System.out.println("The List of "+ positionName[position-1]+ " players");
+			if (numPlayers < playerList.size()) {
+			for (int x = 0; x < numPlayers; ++x) {
+				System.out.println(playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+			}
+			}
+			else {
+				for (int x = 0; x <  playerList.size(); ++x) {
+					System.out.println(playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+				}
+			}
+		}
+		else {
+			playerList = teamPositions.get(teamNames.get(team)).get(positionName[position + 4]);
+			//sort the player stuff 
+			//System.out.println("The list of "+ positionName[position - 1] + " players for the "+teamNames.get(team)+"s");
+			if (numPlayers < playerList.size()) {
+				for (int x = 0; x < numPlayers; ++x) {
+					System.out.println(playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+				}
+			}
+			else {
+			for (int x = 0; x < playerList.size(); ++x) {
+				System.out.println(playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+			}
+			}
+			
 		}
 		
+		
+	}
 		
 	}
 	
