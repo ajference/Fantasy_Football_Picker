@@ -449,7 +449,7 @@ public class NFL {
 				Collections.sort(playerList); 
 				playerList = positionMap.getPlayerList();
 				for (int x = 0; x <  playerList.size(); ++x) {
-					System.out.println((x+1)+ " " + playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+					System.out.println((x+1)+ " " + playerList.get(x).getName());
 				}
 			}
 			else {
@@ -458,12 +458,12 @@ public class NFL {
 			//System.out.println("The List of "+ positionName[position-1]+ " players");
 			if (numPlayers < playerList.size()) {
 			for (int x = 0; x < numPlayers; ++x) {
-				System.out.println((x+1)+ " " +playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+				System.out.println((x+1)+ " " +playerList.get(x).getName());
 			}
 			}
 			else {
 				for (int x = 0; x <  playerList.size(); ++x) {
-					System.out.println((x+1)+ " " + playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+					System.out.println((x+1)+ " " + playerList.get(x).getName()); //+ " " + playerList.get(x).getPlayerCost());
 				}
 			}
 			}
@@ -474,12 +474,12 @@ public class NFL {
 			//System.out.println("The list of "+ positionName[position - 1] + " players for the "+teamNames.get(team)+"s");
 			if (numPlayers < playerList.size()) {
 				for (int x = 0; x < numPlayers; ++x) {
-					System.out.println((x+1)+ " " + playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+					System.out.println((x+1)+ " " + playerList.get(x).getName());
 				}
 			}
 			else {
 			for (int x = 0; x < playerList.size(); ++x) {
-				System.out.println((x+1)+ " " + playerList.get(x).getName() + " " + playerList.get(x).getPlayerCost());
+				System.out.println((x+1)+ " " + playerList.get(x).getName());
 			}
 			}	
 		}

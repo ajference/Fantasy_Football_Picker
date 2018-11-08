@@ -32,6 +32,7 @@ public class ReadFiles {
 		Players = new HashMap<String,ArrayList<Player>>();
 		Teams = new HashMap <Integer, String>();
 		PlayerPositions = new HashMap <String,ArrayList<Player>>(); 
+		allPlayers = new ArrayList<Player>();
 	}
 	
 	public void readTeamRanks() throws FileNotFoundException {

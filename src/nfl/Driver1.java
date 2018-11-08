@@ -27,6 +27,9 @@ public class Driver1 {
 	int teamguru = 0;
 	int posRev = 0;
 	int teamComp = 0;
+	int wideRe = 0;
+	int wideRe1 = 0;
+	int wideRe2 = 0;
 	Scanner scan = new Scanner (System.in);
 	ArrayList<Player> Current = new ArrayList<Player>();
 	ArrayList<Player> myTeam = new ArrayList<Player>();
@@ -132,11 +135,60 @@ public class Driver1 {
 					NFL.printPlayerPosition(0, 4, 5);
 					weekchooser = scan.nextInt();
 					guru.add(NFL.getPlayer(weekchooser - 1));
+					
 					System.out.println("Now time to Pick a Running Back Pick, Choose 1 of these 5 Runnings backs");
 					NFL.printPlayerPosition(0, 3, 5);
 					weekchooser = scan.nextInt();
 					guru.add(NFL.getPlayer(weekchooser - 1));
-					System.out.println("The team you selected is " + guru.get(0).getName() + " " + guru.get(1).getName());
+					
+					System.out.println("Now time to Pick your first Wide Reciever, Choose 1 of these 7 Runnings backs");
+					NFL.printPlayerPosition(0, 2, 7);
+					weekchooser = scan.nextInt();
+					wideRe = weekchooser;
+					guru.add(NFL.getPlayer(weekchooser - 1));
+					
+					while(wideRe2 == 0) {
+					System.out.println("Now time to Pick your Second Wide Reciever, Choose 1 of these 7 Runnings backs");
+					NFL.printPlayerPosition(0, 2, 7);
+					weekchooser = scan.nextInt();
+					wideRe1 = weekchooser;
+					
+					if(weekchooser != wideRe) {
+					guru.add(NFL.getPlayer(weekchooser - 1));
+					wideRe2 = 2;
+					}
+					else {
+						System.out.println("You have already picked that player, Pick a different one");
+					}
+					
+					}
+					wideRe2 = 0;
+					
+					while(wideRe2 == 0) {
+						System.out.println("Now time to Pick your Third Wide Reciever, Choose 1 of these 7 Runnings backs");
+						NFL.printPlayerPosition(0, 2, 7);
+						weekchooser = scan.nextInt();
+						
+						if(weekchooser != wideRe && weekchooser != wideRe1) {
+						guru.add(NFL.getPlayer(weekchooser - 1));
+						wideRe2 = 1;
+						}
+						else {
+							System.out.println("You have already picked that player, Pick a different one");
+						}
+						
+					}
+					
+					System.out.println("Now time to Pick your Tight End, Choose 1 of these 5 Runnings backs");
+					NFL.printPlayerPosition(0, 1, 5);
+					weekchooser = scan.nextInt();
+					wideRe = weekchooser;
+					guru.add(NFL.getPlayer(weekchooser - 1));
+					
+					
+					
+					
+					System.out.println("\nThe team you selected is\n" + guru.get(0).getName() + "\n" + guru.get(1).getName() + "\n" + guru.get(2).getName() + "\n" + guru.get(3).getName() + "\n" + guru.get(4).getName() + "\n" + guru.get(5).getName());
 					firstTime = 1;
 					Current = guru;
 					
