@@ -60,11 +60,9 @@ public class CalculateRanks extends NFL {
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j > teamList.size(); j++) {
 				if(teamList.get(j).getQB_Offset() == i) {
-					// FIXME
-					// Here I want to print out teamList.get(j)'s Starting qb
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("QB");
 					Collections.sort(players);
-					System.out.println(players.get(0).getName());
+					System.out.println(players.get(0).getName() + " " + players.get(0).getTeam());
 					QBnum++;
 				}
 			}
@@ -78,11 +76,9 @@ public class CalculateRanks extends NFL {
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j > teamList.size(); j++) {
 				if(teamList.get(j).getRB_Offset() == i) {
-					// FIXME
-					// Here I want to print out teamList.get(j)'s Starting rb
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("RB");
 					Collections.sort(players);
-					System.out.println(players.get(0).getName());
+					System.out.println(players.get(0).getName() + " " + players.get(0).getTeam());
 					RBnum++;
 				}
 			}
@@ -96,11 +92,9 @@ public class CalculateRanks extends NFL {
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j > teamList.size(); j++) {
 				if(teamList.get(j).getWR_Offset() == i) {
-					// FIXME
-					// Here I want to print out teamList.get(j)'s Starting wr
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("WR");
 					Collections.sort(players);
-					System.out.println(players.get(0).getName());
+					System.out.println(players.get(0).getName() + " " + players.get(0).getTeam());
 					WRnum++;
 				}
 			}
@@ -114,11 +108,9 @@ public class CalculateRanks extends NFL {
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j > teamList.size(); j++) {
 				if(teamList.get(j).getTE_Offset() == i) {
-					// FIXME
-					// Here I want to print out teamList.get(j)'s Starting te
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("TE");
 					Collections.sort(players);
-					System.out.println(players.get(0).getName());
+					System.out.println(players.get(0).getName() + " " + players.get(0).getTeam());
 					TEnum++;
 				}
 			}
