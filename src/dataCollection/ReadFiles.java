@@ -18,7 +18,6 @@ public class ReadFiles {
 	private Map <String,ArrayList<Player>> Players;
 	private Map <Integer, String> Teams;
 	private Map <String, HashMap<String, ArrayList<Player>>> TeamPositions;
-	private HashMap<String, ArrayList<Player>> innerHash;
 	private Map <String,ArrayList<Player>> PlayerPositions;
 	private ArrayList<Player> allPlayers;
 	private Map <String,String> schedule;
@@ -29,7 +28,6 @@ public class ReadFiles {
 	
 	public ReadFiles() throws FileNotFoundException {
 		TeamPositions = new HashMap <String, HashMap<String, ArrayList<Player>>>();
-		innerHash = new HashMap<String, ArrayList<Player>>();
 		teamInfo = new HashMap<String,Team>();
 		Players = new HashMap<String,ArrayList<Player>>();
 		Teams = new HashMap <Integer, String>();
@@ -89,6 +87,7 @@ public class ReadFiles {
 		ArrayList<Player> TotalWR = new ArrayList<Player>();
 		ArrayList<Player> TotalQB = new ArrayList<Player>();
 		ArrayList<Player> TotalDST = new ArrayList<Player>();
+		HashMap<String, ArrayList<Player>> innerHash = new HashMap<String, ArrayList<Player>>();
 
 		//Initialize buckets to default
 		Player tempPlayer;
@@ -130,7 +129,7 @@ public class ReadFiles {
 			 }
 			if (temp.compareTo(fields[2]) == 0) {
 				player.add(tempPlayer);
-				if (fields[1] == "TE") {
+				if (fields[1].compareTo("TE") == 0) {
 					te.add(tempPlayer);
 					
 				}
@@ -162,6 +161,7 @@ public class ReadFiles {
 				innerHash.put("DST",dst);
 				TeamPositions.put(temp, innerHash);
 				temp = fields[2];
+				innerHash = new HashMap<String, ArrayList<Player>>();
 				player = new ArrayList<Player>();
 				te = new ArrayList<Player>();
 				rb = new ArrayList<Player>();
@@ -169,7 +169,7 @@ public class ReadFiles {
 				qb = new ArrayList<Player>();
 				dst = new ArrayList<Player>();
 				player.add(tempPlayer);
-				if (fields[1] == "TE") {
+				if (fields[1].compareTo("TE") == 0) {
 					te.add(tempPlayer);
 					
 				}
@@ -191,11 +191,21 @@ public class ReadFiles {
 				}
 			}
 		}
+		Teams.put(count, temp);
+		Players.put(temp, player);
+		innerHash.put("TE",te);
+		innerHash.put("RB",rb);
+		innerHash.put("WR",wr);
+		innerHash.put("QB",qb);
+		innerHash.put("DST",dst);
+		TeamPositions.put(temp, innerHash);
+		
 		PlayerPositions.put("TE",TotalTE);
 		PlayerPositions.put("RB",TotalRB);
 		PlayerPositions.put("WR",TotalWR);
 		PlayerPositions.put("QB",TotalQB);
 		PlayerPositions.put("DST",TotalDST);
+		in.close();
 	}
 	
 	public void buildNFL () throws FileNotFoundException {
@@ -222,6 +232,7 @@ public class ReadFiles {
 			}
 		}
 		numGames.add(count - 1);
+		in.close();
 	}
 	
 	public Map <String,String> getSchedule(){

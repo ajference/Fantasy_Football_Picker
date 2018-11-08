@@ -3,6 +3,7 @@ package dataCollection;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,15 +55,17 @@ public class CalculateRanks extends NFL {
 		int WRnum = 0;
 		int TEnum = 0;
 		
+		Map <String, HashMap<String, ArrayList<Player>>> temp2= files.getTeamPositions();
 		
 		System.out.println("Here are the best QB's to pick from based on their matchup in week " + week);
+		System.out.println("~The Player -- Their Team~");
 		// Finds the top QB's to pick
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getQB_Offset() == i) {
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("QB");
 					Collections.sort(players);
-					System.out.println(players.get(0).getName() + " " + players.get(0).getTeam());
+					System.out.println(players.get(0).getName() + "--" + players.get(0).getTeam());
 					QBnum++;
 				}
 			}
@@ -71,14 +74,20 @@ public class CalculateRanks extends NFL {
 			}
 		}
 		
-		System.out.println("Here are the best RB's to pick from based on their matchup in week " + week);
+		System.out.println("\nHere are the best RB's to pick from based on their matchup in week " + week);
+		System.out.println("~The Player -- Their Team~");
 		// Finds the top RB's to pick
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getRB_Offset() == i) {
+					
+					String temp = teamList.get(j).getName();
+					temp2= files.getTeamPositions();
+					HashMap<String, ArrayList<Player>> temp1 = files.getTeamPositions().get(teamList.get(j).getName());
+					
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("RB");
 					Collections.sort(players);
-					System.out.println(players.get(0).getName() + " " + players.get(0).getTeam());
+					System.out.println(players.get(0).getName() + "--" + players.get(0).getTeam());
 					RBnum++;
 				}
 			}
@@ -87,14 +96,15 @@ public class CalculateRanks extends NFL {
 			}
 		}
 		
-		System.out.println("Here are the best WR's to pick from based on their matchup in week " + week);
+		System.out.println("\nHere are the best WR's to pick from based on their matchup in week " + week);
+		System.out.println("~The Player -- Their Team~");
 		// Finds the top WR's to pick
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getWR_Offset() == i) {
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("WR");
 					Collections.sort(players);
-					System.out.println(players.get(0).getName() + " " + players.get(0).getTeam());
+					System.out.println(players.get(0).getName() + "--" + players.get(0).getTeam());
 					WRnum++;
 				}
 			}
@@ -103,14 +113,15 @@ public class CalculateRanks extends NFL {
 			}
 		}
 		
-		System.out.println("Here are the best TE's to pick from based on their matchup in week " + week);
+		System.out.println("\nHere are the best TE's to pick from based on their matchup in week " + week);
+		System.out.println("~The Player -- Their Team~");
 		// Finds the top TE's to pick
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getTE_Offset() == i) {
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("TE");
 					Collections.sort(players);
-					System.out.println(players.get(0).getName() + " " + players.get(0).getTeam());
+					System.out.println(players.get(0).getName() + "--" + players.get(0).getTeam());
 					TEnum++;
 				}
 			}
