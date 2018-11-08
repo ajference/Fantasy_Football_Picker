@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import dataCollection.CalculateRanks;
+
 
 
 public class Driver1 {
@@ -552,21 +554,40 @@ public class Driver1 {
 			
 		}
 		if(g == 4) {	//Top Players
-			System.out.println("These are this weeks top players!");
-			NFL.printTeamPlayers(7,0);
-			System.out.println("Enter 1 to go back to main screen");
-			while(!scan.hasNextInt()) {
-				System.out.println("Enter a Number");	
-				scan.next();
+			posRev = 0;
+			while(posRev == 0) {
+				System.out.println("Enter a week 1-17");
+				while(!scan.hasNextInt()) {
+					System.out.println("Enter a Number");	
+					scan.next();
+					}
+				weekchooser = scan.nextInt();
+				
+				System.out.println("These are this weeks top players!");
+				CalculateRanks.makeBreakDown(weekchooser);
+			
+				
+				System.out.println("Enter 1 to go back to main screen or 2 to choose a new week");
+				while(!scan.hasNextInt()) {
+					System.out.println("Enter a Number");	
+					scan.next();
+					}
+				weekchooser = scan.nextInt();
+				
+				if(weekchooser == 1) {
+					g = 0; 
+					back = 0;
+					destination = scan.nextLine();
+					posRev = 1;
 				}
-			weekchooser = scan.nextInt();
-			
-			if(weekchooser == 1) {
-				g = 0; 
-				back = 0;
-				destination = scan.nextLine();
+				else if(weekchooser == 2) {
+					posRev = 0;
+					destination = scan.nextLine();
+				}
+				else {
+					System.out.println("Enter a valid Choice");
+				}
 			}
-			
 		}
 	}
 		}

@@ -17,7 +17,7 @@ public class CalculateRanks extends NFL {
 		super();
 	}
 	
-	public void makeBreakDown(int week) {
+	public static void makeBreakDown(int week) {
 		teams = files.getTeamInfoMap();
 		ArrayList<Team> teamList = new ArrayList<Team>();
 		List<Integer> numGames = files.getNumGames();
@@ -58,7 +58,7 @@ public class CalculateRanks extends NFL {
 		System.out.println("Here are the best QB's to pick from based on their matchup in week " + week);
 		// Finds the top QB's to pick
 		for(i = 62; i >= 2; i--) {
-			for(j = 0; j > teamList.size(); j++) {
+			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getQB_Offset() == i) {
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("QB");
 					Collections.sort(players);
@@ -74,7 +74,7 @@ public class CalculateRanks extends NFL {
 		System.out.println("Here are the best RB's to pick from based on their matchup in week " + week);
 		// Finds the top RB's to pick
 		for(i = 62; i >= 2; i--) {
-			for(j = 0; j > teamList.size(); j++) {
+			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getRB_Offset() == i) {
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("RB");
 					Collections.sort(players);
@@ -90,7 +90,7 @@ public class CalculateRanks extends NFL {
 		System.out.println("Here are the best WR's to pick from based on their matchup in week " + week);
 		// Finds the top WR's to pick
 		for(i = 62; i >= 2; i--) {
-			for(j = 0; j > teamList.size(); j++) {
+			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getWR_Offset() == i) {
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("WR");
 					Collections.sort(players);
@@ -106,7 +106,7 @@ public class CalculateRanks extends NFL {
 		System.out.println("Here are the best TE's to pick from based on their matchup in week " + week);
 		// Finds the top TE's to pick
 		for(i = 62; i >= 2; i--) {
-			for(j = 0; j > teamList.size(); j++) {
+			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getTE_Offset() == i) {
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("TE");
 					Collections.sort(players);
