@@ -39,6 +39,10 @@ public class NFL {
 		
 	}
 	
+	public ReadFiles getFile(){
+		return files;
+	}
+	
 	public static void teamComparison(int week, int match){
 		teams = files.getTeamInfoMap();
 		Map <String,String> schedule = files.getSchedule();

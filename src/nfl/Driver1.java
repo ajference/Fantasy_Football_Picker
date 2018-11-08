@@ -68,9 +68,7 @@ public class Driver1 {
 		if(g == 1) {	//Weekly
 			while(back == 1) {
 				
-//				System.out.println("These Are the teams that are playing this week");
-//				System.out.println("1 Eagles vs Seahawks \n2 Dolphins vs Patriots\n3 Mo vs Bamba\n4 Justin vs Josh");
-//				//NFL.printWeeklySchedule();
+
 				System.out.println("Enter a week you want to view (1-17) or Enter 25 to go back");
 
 				while(!scan.hasNextInt()) {
@@ -112,7 +110,7 @@ public class Driver1 {
 						back = 1;
 						destination = scan.nextLine();
 					}
-					else if(weekchooser >= 1 && weekchooser < 17) {  //FIXME
+					else if(weekchooser >= 1 && weekchooser <= temp.getFile().getNumGames().get(week - 1)) { 
 					
 					match = weekchooser;
 					NFL.teamComparison(week, match);
@@ -282,7 +280,7 @@ public class Driver1 {
 					numChecker = 0;
 					
 					
-					System.out.println("\nThe team you selected is\n" + guru.get(0).getName() + "\n" + guru.get(1).getName() + "\n" + guru.get(2).getName() + "\n" + guru.get(3).getName() + "\n" + guru.get(4).getName() + "\n" + guru.get(5).getName());
+					System.out.println("\nThe team you selected is\nQuarterBack \t\t" + guru.get(0).getName() + "\nRunning Back \t\t" + guru.get(1).getName() + "\nWide Reciever 1 \t" + guru.get(2).getName() + "\nWide Reciever 2 \t" + guru.get(3).getName() + "\nWide Reciever 3 \t" + guru.get(4).getName() + "\nTight End \t\t" + guru.get(5).getName());
 					firstTime = 1;
 					Current = guru;
 					
@@ -529,9 +527,9 @@ public class Driver1 {
 				
 				
 				
-				System.out.println("Your Team is now Complete\n" + myTeam.get(0).getName() + "\n" + myTeam.get(1).getName() + "\n" + myTeam.get(2).getName() + "\n" + myTeam.get(3).getName() 
-						+ "\n" + myTeam.get(4).getName() + "\n" + myTeam.get(5).getName() + "\n"
-						+"Enter 5 to go back to main screen or Select a possition to change 1 for QB 2 for RB 3 for WR 4 for TE");
+				System.out.println("Your Team is now Complete\nQuarterBack \t\t" + myTeam.get(0).getName() + "\nRunning Back \t\t" + myTeam.get(1).getName() + "\nWide Reciever 1 \t" + myTeam.get(2).getName() + "\nWide Reciever 2 \t" + myTeam.get(3).getName() 
+						+ "\nWide Reciever 3 \t" + myTeam.get(4).getName() + "\nTight End \t\t" + myTeam.get(5).getName() + "\n"
+						+"Enter 5 to go back to main screen or Select a position to change\n1 for QB \n2 for RB \n3 for WR \n4 for TE");
 				teamComp = 1;
 				while(!scan.hasNextInt()) {
 					System.out.println("Enter a Number");	
@@ -555,7 +553,9 @@ public class Driver1 {
 		}
 		if(g == 4) {	//Top Players
 			posRev = 0;
+			numChecker = 0;
 			while(posRev == 0) {
+				while(numChecker == 0) {
 				System.out.println("Enter a week 1-17");
 				while(!scan.hasNextInt()) {
 					System.out.println("Enter a Number");	
@@ -563,6 +563,15 @@ public class Driver1 {
 					}
 				weekchooser = scan.nextInt();
 				
+				if(weekchooser < 17 && weekchooser > 0) {
+					numChecker = 1;
+				}
+				else {
+					System.out.println("Enter a valid Choice");
+				}
+				
+				
+				}
 				System.out.println("These are this weeks top players!");
 				CalculateRanks.makeBreakDown(weekchooser);
 			
@@ -582,6 +591,7 @@ public class Driver1 {
 				}
 				else if(weekchooser == 2) {
 					posRev = 0;
+					numChecker = 0;
 					destination = scan.nextLine();
 				}
 				else {
@@ -592,18 +602,7 @@ public class Driver1 {
 	}
 		}
 	
-//	public boolean stringCheck() {
-//	Scanner testscan = new Scanner(System.in);
-//	int test; 
-//	    try
-//	    {
-//	        test = testscan.nextInt();
-//	        return false;
-//	    } catch (InputMismatchException ex)
-//	    {
-//	        return true;
-//	    }
-//	}
+
 	
 	
 	

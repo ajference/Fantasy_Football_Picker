@@ -219,7 +219,7 @@ public class ReadFiles {
 			String x = feilds[0].split(" ")[0];
 			if (x.compareTo("Week") == 0) {
 				if (Week != null) {
-				numGames.add(count - 1);
+				numGames.add(count-1);
 				}
 				Week = feilds[0];
 				count = 1;
@@ -231,7 +231,7 @@ public class ReadFiles {
 				}
 			}
 		}
-		numGames.add(count - 1);
+		numGames.add(count-1);
 		in.close();
 	}
 	
