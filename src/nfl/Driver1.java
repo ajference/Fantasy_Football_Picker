@@ -12,7 +12,6 @@ public class Driver1 {
 	public static void main(String[] args) throws FileNotFoundException {
 		
 		NFL temp = new NFL();
-		temp.buildNFL();
 		
 	
 		
@@ -30,6 +29,7 @@ public class Driver1 {
 	int wideRe = 0;
 	int wideRe1 = 0;
 	int wideRe2 = 0;
+	int numChecker = 0;
 	Scanner scan = new Scanner (System.in);
 	ArrayList<Player> Current = new ArrayList<Player>();
 	ArrayList<Player> myTeam = new ArrayList<Player>();
@@ -123,27 +123,59 @@ public class Driver1 {
 					if(weekchooser == 1) {
 						firstTime = 0;
 					}
-					if(weekchooser == 2) {
+					else if(weekchooser == 2) {
 						g = 0; 
 						back = 0;
 						destination = scan.nextLine();
 					}
-					
+					else {
+						System.out.println("Enter a Valid Choice");
+					}
 				}
 				if(firstTime == 0) {
+					while(numChecker == 0) {
 					System.out.println("Welcome to Pick Guru\nTime To Make a Team!\nLet's Start with The QuarterBack\nChoose 1 of the top 5 quarterbacks");
 					NFL.printPlayerPosition(0, 4, 5);
 					weekchooser = scan.nextInt();
+					if(weekchooser > 5 || weekchooser < 0) {
+						System.out.println("Enter a valid Choice");
+					}
+					else {
+						numChecker = 1;
+					}
+					}
 					guru.add(NFL.getPlayer(weekchooser - 1));
-					
+					numChecker = 0;
+					while(numChecker == 0) {
 					System.out.println("Now time to Pick a Running Back Pick, Choose 1 of these 5 Runnings backs");
 					NFL.printPlayerPosition(0, 3, 5);
 					weekchooser = scan.nextInt();
-					guru.add(NFL.getPlayer(weekchooser - 1));
 					
+					if(weekchooser > 5 || weekchooser < 0) {
+						System.out.println("Enter a valid Choice");
+					}
+					else {
+						numChecker = 1;
+					}
+					
+					}
+					guru.add(NFL.getPlayer(weekchooser - 1));
+					numChecker = 0;
+					
+					while(numChecker == 0) {
 					System.out.println("Now time to Pick your first Wide Reciever, Choose 1 of these 7 Runnings backs");
 					NFL.printPlayerPosition(0, 2, 7);
 					weekchooser = scan.nextInt();
+					
+					if(weekchooser > 7 || weekchooser < 0) {
+						System.out.println("Enter a valid Choice");
+					}
+					else {
+						numChecker = 1;
+					}
+					
+					}
+					numChecker = 0;
 					wideRe = weekchooser;
 					guru.add(NFL.getPlayer(weekchooser - 1));
 					
@@ -153,12 +185,17 @@ public class Driver1 {
 					weekchooser = scan.nextInt();
 					wideRe1 = weekchooser;
 					
-					if(weekchooser != wideRe) {
+					if(weekchooser != wideRe && weekchooser <= 7 && weekchooser > 0) {
 					guru.add(NFL.getPlayer(weekchooser - 1));
 					wideRe2 = 2;
 					}
 					else {
+						if(weekchooser > 7 || weekchooser < 0) {
+							System.out.println("Enter a valid Choice");
+						}
+						else {
 						System.out.println("You have already picked that player, Pick a different one");
+						}
 					}
 					
 					}
@@ -169,23 +206,37 @@ public class Driver1 {
 						NFL.printPlayerPosition(0, 2, 7);
 						weekchooser = scan.nextInt();
 						
-						if(weekchooser != wideRe && weekchooser != wideRe1) {
+						if(weekchooser != wideRe && weekchooser != wideRe1 && weekchooser <= 7 && weekchooser > 0) {
 						guru.add(NFL.getPlayer(weekchooser - 1));
 						wideRe2 = 1;
 						}
 						else {
+							if(weekchooser > 7 || weekchooser < 0) {
+								System.out.println("Enter a valid Choice");
+							}
+							else {
 							System.out.println("You have already picked that player, Pick a different one");
+							}
 						}
 						
 					}
 					
+					while(numChecker == 0) {
 					System.out.println("Now time to Pick your Tight End, Choose 1 of these 5 Runnings backs");
 					NFL.printPlayerPosition(0, 1, 5);
 					weekchooser = scan.nextInt();
+					if(weekchooser > 5 || weekchooser < 0) {
+						System.out.println("Enter a valid Choice");
+					}
+					else {
+						numChecker = 1;
+					}
+					
+					}
 					wideRe = weekchooser;
 					guru.add(NFL.getPlayer(weekchooser - 1));
 					
-					
+					numChecker = 0;
 					
 					
 					System.out.println("\nThe team you selected is\n" + guru.get(0).getName() + "\n" + guru.get(1).getName() + "\n" + guru.get(2).getName() + "\n" + guru.get(3).getName() + "\n" + guru.get(4).getName() + "\n" + guru.get(5).getName());

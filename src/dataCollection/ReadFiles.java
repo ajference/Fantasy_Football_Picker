@@ -39,6 +39,7 @@ public class ReadFiles {
 		schedule = new HashMap<String,String>();
 		this.readPlayerStats();
 		this.readTeamRanks();
+		this.buildNFL();
 	}
 	
 	public void readTeamRanks() throws FileNotFoundException {
