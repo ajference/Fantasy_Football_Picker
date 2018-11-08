@@ -13,19 +13,21 @@ import nfl.Team;
 
 public class ReadFiles {
 	
-	Map <String,Team> teamInfo;
+	private Map <String,Team> teamInfo;
 //	Map<String,String> teamToPos;
-	Map <String,ArrayList<Player>> Players;
-	Map <Integer, String> Teams;
-	Map <String, HashMap<String, ArrayList<Player>>> TeamPositions;
-	HashMap<String, ArrayList<Player>> innerHash;
-	Map <String,ArrayList<Player>> PlayerPositions;
-	ArrayList<Player> allPlayers;
+	private Map <String,ArrayList<Player>> Players;
+	private Map <Integer, String> Teams;
+	private Map <String, HashMap<String, ArrayList<Player>>> TeamPositions;
+	private HashMap<String, ArrayList<Player>> innerHash;
+	private Map <String,ArrayList<Player>> PlayerPositions;
+	private ArrayList<Player> allPlayers;
+	private Map <String,String> schedule;
+	private List<Integer> numGames;
 	
 	
 	
 	
-	public ReadFiles() {
+	public ReadFiles() throws FileNotFoundException {
 		TeamPositions = new HashMap <String, HashMap<String, ArrayList<Player>>>();
 		innerHash = new HashMap<String, ArrayList<Player>>();
 		teamInfo = new HashMap<String,Team>();
@@ -33,6 +35,10 @@ public class ReadFiles {
 		Teams = new HashMap <Integer, String>();
 		PlayerPositions = new HashMap <String,ArrayList<Player>>(); 
 		allPlayers = new ArrayList<Player>();
+		numGames = new ArrayList<Integer>();
+		schedule = new HashMap<String,String>();
+		this.readPlayerStats();
+		this.readTeamRanks();
 	}
 	
 	public void readTeamRanks() throws FileNotFoundException {
@@ -189,6 +195,39 @@ public class ReadFiles {
 		PlayerPositions.put("WR",TotalWR);
 		PlayerPositions.put("QB",TotalQB);
 		PlayerPositions.put("DST",TotalDST);
+	}
+	
+	public void buildNFL () throws FileNotFoundException {
+		int count = 1; 
+		String Week = null;
+		File location  = new File("");
+		Scanner in = new Scanner(new File(location.getAbsolutePath() +"/src/input_files/NFL_Schedule.txt"));
+		while (in.hasNextLine()){
+			String line = in.nextLine();
+			String[] feilds = line.split(",");
+			String x = feilds[0].split(" ")[0];
+			if (x.compareTo("Week") == 0) {
+				if (Week != null) {
+				numGames.add(count - 1);
+				}
+				Week = feilds[0];
+				count = 1;
+		    }
+			for (int j = 0; j < feilds.length - 1; j++) {
+				if (feilds[j].charAt(0) != '"' && feilds[j].compareTo(Week) != 0) {
+			schedule.put(Week + "G" + count, feilds[j]);
+			count ++;
+				}
+			}
+		}
+		numGames.add(count - 1);
+	}
+	
+	public Map <String,String> getSchedule(){
+		return schedule;
+	}
+	public List<Integer> getNumGames(){
+		return numGames;
 	}
 	
 	public Map <String,ArrayList<Player>> getPlayerMap() {

@@ -12,50 +12,25 @@ import java.util.Scanner;
 import dataCollection.ReadFiles;
 
 public class NFL {
-	private static Map <String,String> schedule;
-	private List<Integer> numGames;
 	private static ArrayList <Player> playerList;
 	private static Map <String,Team> teams;
 	private static Map <String,ArrayList<Player>> players;
 	private static Map <Integer, String> teamNames;
 	private static Map <String,ArrayList<Player>> playerPositions;
 	private static Map <String, HashMap<String, ArrayList<Player>>> teamPositions;
+	private static ReadFiles files;
 	
-	public NFL() {
+	public NFL() throws FileNotFoundException {
+		files = new ReadFiles();
 		playerPositions = new HashMap <String,ArrayList<Player>>();
 		teamPositions = new HashMap <String, HashMap<String, ArrayList<Player>>>();
-		schedule = new HashMap<String,String>();
-		numGames = new ArrayList<Integer>();
 		teams = new HashMap<String,Team>();
 		playerList = new ArrayList<Player>();
 	}
-	public void buildNFL () throws FileNotFoundException {
-		int count = 1; 
-		String Week = null;
-		File location  = new File("");
-		Scanner in = new Scanner(new File(location.getAbsolutePath() +"/src/input_files/NFL_Schedule.txt"));
-		while (in.hasNextLine()){
-			String line = in.nextLine();
-			String[] feilds = line.split(",");
-			String x = feilds[0].split(" ")[0];
-			if (x.compareTo("Week") == 0) {
-				if (Week != null) {
-				numGames.add(count - 1);
-				}
-				Week = feilds[0];
-				count = 1;
-		    }
-			for (int j = 0; j < feilds.length - 1; j++) {
-				if (feilds[j].charAt(0) != '"' && feilds[j].compareTo(Week) != 0) {
-			schedule.put(Week + "G" + count, feilds[j]);
-			count ++;
-				}
-			}
-		}
-		numGames.add(count - 1);
-	}
 	
 	public void printWeeklySchedule(int week) {
+		Map <String,String> schedule = files.getSchedule();
+		List<Integer> numGames = files.getNumGames();
 		System.out.println("Week "+ week + " Games:");
 		for (int j = 0; j < numGames.get(week - 1); ++j) {
 		String x = schedule.get("Week "+ week + ":G" + (j+1));
@@ -64,10 +39,9 @@ public class NFL {
 		
 	}
 	
-	public static void teamComparison(int week, int match) throws FileNotFoundException {
-		ReadFiles makingTeam = new ReadFiles();
-		makingTeam.readTeamRanks();
-		teams = makingTeam.getTeamInfoMap();
+	public static void teamComparison(int week, int match){
+		teams = files.getTeamInfoMap();
+		Map <String,String> schedule = files.getSchedule();
 		String x = schedule.get("Week "+ week + ":G" + match);
 		String w = x.split(" @ ")[0];
 		String f = x.split(" @ ")[1].substring(1, x.split(" @ ")[1].length());
@@ -399,20 +373,16 @@ public class NFL {
 		}
 	}
 	
-	public void printTeamList() throws FileNotFoundException {
-		ReadFiles playerMap = new ReadFiles();
-		playerMap.readPlayerStats();
-		teamNames = playerMap.getTeamMap();
+	public void printTeamList() {
+		teamNames = files.getTeamMap();
 		for (int x = 1; x < teamNames.size(); ++x) {
 		  System.out.println(x + " " + teamNames.get(x));
 		}
 	}
 	
-	public static void printTeamPlayers(int team, int person) throws FileNotFoundException {
-		ReadFiles playerMap = new ReadFiles();
-		playerMap.readPlayerStats();
-		players = playerMap.getPlayerMap();
-		teamNames = playerMap.getTeamMap();
+	public static void printTeamPlayers(int team, int person) {
+		players = files.getPlayerMap();
+		teamNames = files.getTeamMap();
 		ArrayList<Player> player;
 		player = new ArrayList<Player>();
 		
@@ -433,21 +403,18 @@ public class NFL {
 		System.out.println("1 Tight End\n2 Wide receivers\n3 Running Back\n4 Quarterback\n5 Defense and Special Teams");
 	}
 		
-	public static void printPlayerPosition(int team, int position, int numPlayers) throws FileNotFoundException {
-		ReadFiles positionMap = new ReadFiles();
-		positionMap.readPlayerStats();
-		positionMap.readTeamRanks();
+	public static void printPlayerPosition(int team, int position, int numPlayers){
 		String[] positionName = new String[]{"Tight End", " Wide receivers","Running Back","Quarterback","Defense and Special Teams", "TE", "WR", "RB", "QB", "DST"}; 
-		playerPositions = positionMap.getPlayerPositions();
-		teamPositions = positionMap.getTeamPositions();
-		teamNames = positionMap.getTeamMap();
+		playerPositions = files.getPlayerPositions();
+		teamPositions = files.getTeamPositions();
+		teamNames = files.getTeamMap();
 		
 		playerList = new ArrayList<Player>();
 		
 		if (team == 0) {
 			if (position == 0) {
 				Collections.sort(playerList); 
-				playerList = positionMap.getPlayerList();
+				playerList = files.getPlayerList();
 				for (int x = 0; x <  playerList.size(); ++x) {
 					System.out.println((x+1)+ " " + playerList.get(x).getName());
 				}
