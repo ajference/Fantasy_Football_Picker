@@ -13,12 +13,12 @@ import dataCollection.ReadFiles;
 
 public class NFL {
 	private static ArrayList <Player> playerList;
-	private static Map <String,Team> teams;
+	protected static Map <String,Team> teams;
 	private static Map <String,ArrayList<Player>> players;
 	private static Map <Integer, String> teamNames;
 	private static Map <String,ArrayList<Player>> playerPositions;
 	private static Map <String, HashMap<String, ArrayList<Player>>> teamPositions;
-	private static ReadFiles files;
+	protected static ReadFiles files;
 	
 	public NFL() throws FileNotFoundException {
 		files = new ReadFiles();
@@ -362,7 +362,7 @@ public class NFL {
 				}
 		
 	}
-	private static String checkString(String f, Map<String, Team> teams2) {
+	protected static String checkString(String f, Map<String, Team> teams2) {
 		Team team1 = teams2.get(f);
 		if (team1 != null) {
 			return f;

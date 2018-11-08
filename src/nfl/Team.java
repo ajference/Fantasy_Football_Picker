@@ -2,7 +2,7 @@ package nfl;
 
 
 
-public class Team {
+public class Team implements Comparable<Team>{
 
 	//Team Identifiers 
 	public String name;
@@ -27,6 +27,12 @@ public class Team {
 	
 	public int teOfRank;
 	public int teDeRank;
+	
+	
+	public int qb_Offset;
+	public int rb_Offset;
+	public int wr_Offset;
+	public int te_Offset;
 	
 	
 	//Constructors
@@ -55,6 +61,31 @@ public class Team {
 		wrDeRank = wrDRank;
 		teOfRank = teORank;
 		teDeRank = teDRank;
+	}
+	
+	public void setQB_Offset(int offset) {
+		qb_Offset = offset;
+	}
+	public int getQB_Offset() {
+		return qb_Offset;
+	}
+	public void setRB_Offset(int offset) {
+		rb_Offset = offset;
+	}
+	public int getRB_Offset() {
+		return rb_Offset;
+	}
+	public void setWR_Offset(int offset) {
+		wr_Offset = offset;
+	}
+	public int getWR_Offset() {
+		return wr_Offset;
+	}
+	public void setTE_Offset(int offset) {
+		te_Offset = offset;
+	}
+	public int getTE_Offset() {
+		return te_Offset;
 	}
 	
 	
@@ -134,4 +165,18 @@ public class Team {
 	public int getteDeRank() {
 		return teDeRank;
 	}
+	
+	@Override
+	  public int compareTo(Team teams) {  
+		if (this.getOffensiveRank() < teams.getOffensiveRank()) {
+			return 1; 
+		}
+		else if (this.getOffensiveRank() == teams.getOffensiveRank()){
+			return 0;
+		}
+		else {
+			return -1;
+		}
+		   
+		  }  
 }
