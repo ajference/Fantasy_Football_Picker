@@ -31,8 +31,10 @@ public class Driver1 {
 	int wideRe = 0;
 	int wideRe1 = 0;
 	int wideRe2 = 0;
+	int wideRe3 = 0;
 	int numChecker = 0;
 	int guruCheck = 0;
+	
 	int wrRev = 0;
 	Scanner scan = new Scanner (System.in);
 	ArrayList<Player> Current = new ArrayList<Player>();
@@ -139,6 +141,7 @@ public class Driver1 {
 					weekchooser = scan.nextInt();
 					if(weekchooser == 1) {
 						firstTime = 0;
+						guru.clear();
 					}
 					else if(weekchooser == 2) {
 						g = 0; 
@@ -205,6 +208,7 @@ public class Driver1 {
 					
 					}
 					numChecker = 0;
+					wideRe2 = 0;
 					wideRe = weekchooser;
 					guru.add(NFL.getPlayer(weekchooser - 1));
 					
@@ -306,25 +310,31 @@ public class Driver1 {
 		if(g == 3) {	//Team Maker
 			while(back == 1) {
 				if(guruCheck == 1 && teamComp == 0) {
-					System.out.println("It looks like you have already used Pick Guru, do you want to use the Same team? 1 for yes, 2 for no");
-					while(!scan.hasNextInt()) {
-						System.out.println("Enter a Number");	
-						scan.next();
+					back = 2;
+					while(back == 2) {
+						System.out.println("It looks like you have already used Pick Guru, do you want to use the Same team? 1 for yes, 2 for no");
+						while(!scan.hasNextInt()) {
+							System.out.println("Enter a Number");	
+							scan.next();
+							}
+						weekchooser = scan.nextInt();
+						
+						if(weekchooser == 1) {
+							myTeam = Current;
+							teamComp = 1;
+							back = 1;
 						}
-					weekchooser = scan.nextInt();
-					if(weekchooser == 1) {
-						myTeam = Current;
-						teamComp = 1;
-					}
-					else if(weekchooser == 2) {
-						teamguru = 1;
-					}
-					else {
-						System.out.println("Enter a Valid Choice");
+						else if(weekchooser == 2) {
+							teamguru = 1;
+							back = 1;
+						}
+						else {
+							System.out.println("Enter a Valid Choice");
+						}
 					}
 				}
 				
-				if(teamguru == 1 && firstTimet == 0)
+				if(teamguru == 0 && firstTimet == 0)
 				System.out.println("Lets make a Team\n");
 				firstTimet = 1;
 				
@@ -369,9 +379,7 @@ public class Driver1 {
 							numChecker = 1;
 						}
 					}
-				if(posRev == 2) {
-					
-				}
+				
 				if(posRev == 2) {
 					myTeam.set(1, NFL.getPlayer(weekchooser - 1));
 				}
@@ -383,8 +391,9 @@ public class Driver1 {
 				
 				
 				if(posRev == 3 || teamComp == 0) {
+					wrRev = 0;
 					if(posRev == 3) {
-						while(posRev == 3) {
+						while(posRev == 3 && wrRev == 0) {
 							System.out.println("Which WR do you want to change? 1 2 or 3?");
 							while(!scan.hasNextInt()) {
 								System.out.println("Enter a Number");	
@@ -401,7 +410,7 @@ public class Driver1 {
 						}
 					}
 					
-					while(wideRe2 == 0) {
+					while(wideRe2 == 0) {			//WideRe 1
 						if((wrRev == 1 && (posRev == 2 || posRev == 3))) {
 							break;
 						}
@@ -413,24 +422,32 @@ public class Driver1 {
 							}
 						weekchooser = scan.nextInt();
 						
-						if(weekchooser > 15 || weekchooser < 0) {
-							System.out.println("Enter a valid Choice");
-						}
-						else {
+						if(weekchooser <= 15 && weekchooser > 0 && wideRe1 != weekchooser && wideRe3 != weekchooser) {
+							if(posRev == 1) {
+								myTeam.set(2, NFL.getPlayer(weekchooser - 1));
+								wideRe = weekchooser;
+							}
+							else {
+								myTeam.add(NFL.getPlayer(weekchooser - 1));
+								wideRe = weekchooser;
+							}
 							wideRe2 = 1;
 						}
-						
-						}
-						wideRe2 = 0;
-						wideRe = weekchooser;
-						if(posRev == 1) {
-							myTeam.set(2, NFL.getPlayer(weekchooser - 1));
-						}
 						else {
-							myTeam.add(NFL.getPlayer(weekchooser - 1));
+							if(weekchooser  > 15 && weekchooser < 0) {
+								System.out.println("Enter a Valid Choice");
+							}
+							else {
+								System.out.println("You have Already Picked that WR");
+							}
 						}
+					}
+					wideRe2 = 0;
 						
-					while(wideRe2 == 0) {
+						
+						
+						
+					while(wideRe2 == 0) {		//WIDERC 2
 						if((wrRev == 1 && (posRev == 1 || posRev == 3))) {
 							break;
 						}
@@ -441,14 +458,16 @@ public class Driver1 {
 							scan.next();
 							}
 						weekchooser = scan.nextInt();
-						wideRe1 = weekchooser;
 						
-						if(weekchooser < 15 && weekchooser > 0 && wideRe != weekchooser) {
+						
+						if(weekchooser <= 15 && weekchooser > 0 && wideRe != weekchooser && wideRe3 != weekchooser) {
 							if(posRev == 2) {
 								myTeam.set(3, NFL.getPlayer(weekchooser - 1));
+								wideRe1 = weekchooser;
 							}
 							else {
 								myTeam.add(NFL.getPlayer(weekchooser -1 ));
+								wideRe1 = weekchooser;
 							}
 							wideRe2 = 1;
 						}
@@ -463,7 +482,7 @@ public class Driver1 {
 					}
 					wideRe2 = 0;
 					
-					while(wideRe2 == 0) {
+					while(wideRe2 == 0) {	//THIRD WIDE RC
 						if((wrRev == 1 && (posRev == 1 || posRev == 2))) {
 							break;
 						}
@@ -475,12 +494,14 @@ public class Driver1 {
 							}
 						weekchooser = scan.nextInt();
 						
-						if(weekchooser < 15 && weekchooser > 0 && wideRe != weekchooser && wideRe1 != weekchooser) {
+						if(weekchooser <= 15 && weekchooser > 0 && wideRe != weekchooser && wideRe1 != weekchooser) {
 							if(posRev == 3) {
 								myTeam.set(4, NFL.getPlayer(weekchooser - 1));
+								wideRe3 = weekchooser;
 							}
 							else {
 							myTeam.add(NFL.getPlayer(weekchooser -1 ));
+							wideRe3 = weekchooser;
 							}
 							wideRe2 = 1;
 						}
