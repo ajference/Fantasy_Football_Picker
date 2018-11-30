@@ -55,8 +55,6 @@ public class CalculateRanks extends NFL {
 		int WRnum = 0;
 		int TEnum = 0;
 		
-		Map <String, HashMap<String, ArrayList<Player>>> temp2= files.getTeamPositions();
-		
 		System.out.println("Here are the best QB's to pick from based on their matchup in week " + week);
 		System.out.println("~The Player -- Their Team~");
 		// Finds the top QB's to pick
@@ -80,11 +78,6 @@ public class CalculateRanks extends NFL {
 		for(i = 62; i >= 2; i--) {
 			for(j = 0; j < teamList.size(); j++) {
 				if(teamList.get(j).getRB_Offset() == i) {
-					
-					String temp = teamList.get(j).getName();
-					temp2= files.getTeamPositions();
-					HashMap<String, ArrayList<Player>> temp1 = files.getTeamPositions().get(teamList.get(j).getName());
-					
 					players = files.getTeamPositions().get(teamList.get(j).getName()).get("RB");
 					Collections.sort(players);
 					System.out.println(players.get(0).getName() + "--" + players.get(0).getTeam());
