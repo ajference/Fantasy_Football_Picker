@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 import dataCollection.ReadFiles;
+import javafx.beans.property.SimpleStringProperty;
 
 public class NFL {
 	private static ArrayList <Player> playerList;
@@ -22,7 +23,7 @@ public class NFL {
 	private static Map <String,ArrayList<Player>> playerPositions;
 	private static Map <String, HashMap<String, ArrayList<Player>>> teamPositions;
 	protected static ReadFiles files;
-	
+	SimpleStringProperty weeks;
 	public NFL() throws FileNotFoundException {
 		files = new ReadFiles();
 		playerPositions = new HashMap <String,ArrayList<Player>>();
@@ -31,15 +32,16 @@ public class NFL {
 		playerList = new ArrayList<Player>();
 	}
 	
-	public void printWeeklySchedule(int week) {
+	public ArrayList<String> printWeeklySchedule(int week) {
+		ArrayList<String> matches = new ArrayList<String>();
 		Map <String,String> schedule = files.getSchedule();
 		List<Integer> numGames = files.getNumGames();
-		System.out.println("Week "+ week + " Games:");
+		//System.out.println("Week "+ week + " Games:", 0);
 		for (int j = 0; j < numGames.get(week - 1); ++j) {
 		String x = schedule.get("Week "+ week + ":G" + (j+1));
-		System.out.println((j + 1) +" " + x.split("@ ")[0] + "Vs." + x.split("@ ")[1]);
+		matches.add(((j + 1) +" " + x.split("@ ")[0] + "Vs." + x.split("@ ")[1]));;
 		}
-		
+		return  matches;
 	}
 	
 	public ReadFiles getFile(){
