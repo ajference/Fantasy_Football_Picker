@@ -243,12 +243,19 @@ public class FantasyGui extends Application {
 	    Text scenetitle = new Text("Pick A Match To Get More Info");
 	    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	    grid.add(scenetitle, 0, 0, 0, 0);
-		final ArrayList<String> matches = nfl.printWeeklySchedule(i);
-		
+		ArrayList<String> matches = nfl.printWeeklySchedule(i);
 
 		    for (int r = 0; r < matches.size(); r++) {
 		            Button button = createButton(matches.get(r));
-		            Label name = new Label(matches.get(r));
+		            GridPane grid2 = new GridPane();
+		    	    grid2.setAlignment(Pos.CENTER);
+		    	    grid2.setHgap(10);
+		    	    grid2.setVgap(10);
+		    	    grid2.setPadding(new Insets(25, 25, 25, 25));
+		    	    Text scenetitle2 = new Text("Stats for the"+ matches.get(r) + " Match");
+		    	    scenetitle2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		    	    grid2.add(scenetitle2, 0, 0, 0, 0);
+		            Label name = new Label("");//nfl.teamComparison(1, r););
 		            button.setOnAction((event) -> {prim.setScene(new Scene(name, 450, 375));});
 		            grid.add(button, 0, r);
 		            
