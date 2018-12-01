@@ -1,6 +1,7 @@
 package picker_gui;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
@@ -25,13 +26,20 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import nfl.NFL;
 
 public class FantasyGui extends Application {
 
-
-	private PageTracker stage;
+	private Scene weeklyScene;
+	private Button exit;
+	private Button back;
+	private Button home;
 	private Button weekly;
+	private Button Pick;
+	private Button Team;
+	private Button Players;
 	private Scene main;
+	private NFL nfl;
 	
 	
 	
@@ -46,26 +54,55 @@ public class FantasyGui extends Application {
 	
 	public void start(Stage primaryStage) throws Exception{
 			//stage set up
+			nfl = new NFL();
 			primaryStage.setTitle("Fantasy Football Picker");
-		    primaryStage.show();
-			//stage = new PageTracker(primaryStage);  
-			
+		    primaryStage.show(); 
 			//main scene 
 		    GridPane grid = new GridPane();
 		    grid.setAlignment(Pos.CENTER);
-		    grid.setHgap(10);
-		    grid.setVgap(10);
-		    grid.setPadding(new Insets(25, 25, 25, 25));
+		    grid.setHgap(40);
+		    grid.setVgap(40);
+		    grid.setPadding(new Insets(100, 100, 100, 100));
 
-		    Scene scene = new Scene(grid, 300, 275);
-		    primaryStage.setScene(scene);
+		     main = new Scene(grid, 450, 375);
+		    primaryStage.setScene(main);
 		    
-		    Text scenetitle = new Text("Welcome");
+		    Text scenetitle = new Text("Pick a Category");
 		    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		    grid.add(scenetitle, 0, 0, 2, 1);
-		    createButtons("test");
+		    exit = createButton("Exit");
+			back = createButton("Back");
+			home = createButton("Home");
+		    weekly = createButton("Weekly Schedule");
+		    Team = createButton("My Team");
+		    Players = createButton("Top Players");
+		    Pick = createButton("Pick Guru");
 		    grid.add(weekly, 0, 1);
-
+		    grid.add(Players, 0, 2);
+		    grid.add(Pick, 1, 1);
+		    grid.add(Team, 1, 2);
+		    
+		    
+		    weekly.setOnAction((event)-> {primaryStage.setScene(main);});
+		    
+		    Team.setOnAction((event) -> {System.out.println("test");});
+		    
+		    Players.setOnAction(new EventHandler<ActionEvent>() {
+	            public void handle(ActionEvent event) {
+	            	System.out.println("test");
+	               //go to the weekly scene 
+	            }
+	        });
+		    
+		    Pick.setOnAction(new EventHandler<ActionEvent>() {
+	            public void handle(ActionEvent event) {
+	            	System.out.println("test");
+	               //go to the weekly scene 
+	            }
+	        });
+		    
+		    
+		    
 //		    Label userName = new Label("User Name:");
 //		    grid.add(userName, 0, 1);
 //
@@ -80,32 +117,132 @@ public class FantasyGui extends Application {
 		    
 		   // primaryStage.setScene(main);
 			
-
 }
 	
 	
-	public Button createButtons(String e) {
+	
+	
+	
+	public Button createButton(String e) {
 		DropShadow shadow = new DropShadow();
-		weekly = new Button("Weekly Schedule");   //sets the button 
-		weekly.setLayoutX(100);
-	    weekly.setLayoutY(80);
-		weekly.addEventFilter(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+		Button button = new Button(e);   //sets the button 
+		button.setLayoutX(150);
+		button.setLayoutY(120);
+		button.addEventFilter(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
 	    	@Override public void handle(MouseEvent e) {
-	    		weekly.setEffect(shadow);
+	    		button.setEffect(shadow);
 	        }
 	});
-		weekly.addEventFilter(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+		button.addEventFilter(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
 	        @Override public void handle(MouseEvent e) {
-	        	weekly.setEffect(null);
+	        	button.setEffect(null);
 	       }});
-		
-		weekly.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-            	System.out.println("test");
-               //go to the weekly scene 
-            }
-        });
-		return weekly;
+		return button;
 	}
+	
+	
+	public void buildPlayerScene() {
 
+		//main scene 
+
+		    GridPane grid = new GridPane();
+
+		    grid.setAlignment(Pos.CENTER);
+
+		    grid.setHgap(10);
+
+		    grid.setVgap(10);
+
+		    grid.setPadding(new Insets(25, 25, 25, 25));
+
+		   
+
+		   
+
+		    Button week1Button  = createButton("Week 1");
+
+		    Button week2Button  = createButton("Week 2");
+
+		    Button week3Button  = createButton("Week 3");
+
+		    Button week4Button  = createButton("Week 4");
+
+		    Button week5Button  = createButton("Week 5");
+
+		    Button week6Button  = createButton("Week 6");
+
+		    Button week7Button  = createButton("Week 7");
+
+		    Button week8Button  = createButton("Week 8");
+
+		    Button week9Button  = createButton("Week 9");
+
+		    Button week10Button = createButton("Week 10");
+
+		    Button week11Button = createButton("Week 11");
+
+		    Button week12Button = createButton("Week 12");
+
+		    Button week13Button = createButton("Week 13");
+
+		    Button week14Button = createButton("Week 14");
+
+		    Button week15Button = createButton("Week 15");
+
+		    Button week16Button = createButton("Week 16");
+
+		    Button week17Button = createButton("Week 17");
+
+		   
+
+		   
+
+		    week1Button.setOnAction((event)-> { DriverOne.TopPlayers(1);});
+
+		    week2Button.setOnAction((event)-> {DriverOne.TopPlayers(2); });
+
+		    week3Button.setOnAction((event)-> {DriverOne.TopPlayers(3); });
+
+		    week4Button.setOnAction((event)-> {DriverOne.TopPlayers(4);});
+
+		    week5Button.setOnAction((event)-> {DriverOne.TopPlayers(5);});
+
+		    week6Button.setOnAction((event)-> {DriverOne.TopPlayers(6); });
+
+		    week7Button.setOnAction((event)-> {DriverOne.TopPlayers(7); });
+
+		    week8Button.setOnAction((event)-> {DriverOne.TopPlayers(8); });
+
+		    week9Button.setOnAction((event)-> {DriverOne.TopPlayers(9); });
+
+		    week10Button.setOnAction((event)-> {DriverOne.TopPlayers(10);});
+
+		    week11Button.setOnAction((event)-> { DriverOne.TopPlayers(11);});
+
+		    week12Button.setOnAction((event)-> { DriverOne.TopPlayers(12);});
+
+		    week13Button.setOnAction((event)-> { DriverOne.TopPlayers(13); });
+
+		    week14Button.setOnAction((event)-> { DriverOne.TopPlayers(14); });
+
+		    week15Button.setOnAction((event)-> {DriverOne.TopPlayers(15);});
+
+		    week16Button.setOnAction((event)-> {DriverOne.TopPlayers(16);});
+
+		    week17Button.setOnAction((event)-> {DriverOne.TopPlayers(17);});
+		    Scene players = new Scene(grid, 300, 275);
+
+		}
+	
+	
+	public void buildWeekMatchesScene(int i) {
+		HashMap<Button, String> matches = new HashMap<Button, String>();
+		
+		printWeeklySchedule(weekchooser);
+	}
+	
+	
+	
+	
+	
 }
