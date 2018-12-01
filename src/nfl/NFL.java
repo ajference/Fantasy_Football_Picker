@@ -39,7 +39,7 @@ public class NFL {
 		//System.out.println("Week "+ week + " Games:", 0);
 		for (int j = 0; j < numGames.get(week - 1); ++j) {
 		String x = schedule.get("Week "+ week + ":G" + (j+1));
-		matches.add(((j + 1) +" " + x.split("@ ")[0] + "Vs." + x.split("@ ")[1]));;
+		matches.add((x.split("@ ")[0] + "Vs." + x.split("@ ")[1]));;
 		}
 		return  matches;
 	}
@@ -49,7 +49,10 @@ public class NFL {
 	}
 	
 	
-	public static void teamComparison(int week, int match){
+	
+public static String teamComparison(int week, int match){
+		String printerString = "";
+		
 		teams = files.getTeamInfoMap();
 		Map <String,String> schedule = files.getSchedule();
 		String x = schedule.get("Week "+ week + ":G" + match);
@@ -59,7 +62,8 @@ public class NFL {
 		//f = NFL.checkString(f, teams);
 		Team team1 = teams.get(w);
 		Team team2 = teams.get(f);
-		System.out.println("Comparing The " + team1.getName() + " vs. The " + team2.getName());
+		printerString += ("Comparing The " + team1.getName() + " vs. The " + team2.getName() + "\n");
+		
 		
 		// Offset numbers are from 2 to 64
 		// low valued numbers show a bad team/position going against a good team/position defense
@@ -84,292 +88,293 @@ public class NFL {
 		
 		
 		// Take a look at the offset for team 1
-		System.out.println("Deeper look into The " + team1.getName() + ":");
+		printerString += ("Deeper look into The " + team1.getName() + ":" + "\n");
 		
 		
 	// Team1 overall offset
-		System.out.println("The " + team1.getName() + " have an overall offensive rank of " + team1.getOffensiveRank() + " and are up against The " + team2.getName() + " who have a defensive rank of " + team2.getDefensiveRank() + ".");
+		printerString += ("The " + team1.getName() + " have an overall offensive rank of " + team1.getOffensiveRank() + " and are up against The " + team2.getName() + " who have a defensive rank of " + team2.getDefensiveRank() + "." + "\n");
 		//Terrible
 		if(team1_Offensive_Offset >= 2 && team1_Offensive_Offset <= 16) {
-			System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal");
+			printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal" + "\n");
 		}
 		//Bad
 		else if(team1_Offensive_Offset >= 17 && team1_Offensive_Offset <= 30) {
-			System.out.println("With this matchup it is discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal");
+			printerString += ("With this matchup it is discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal" + "\n");
 		}
 		//Average
 		else if(team1_Offensive_Offset >= 31 && team1_Offensive_Offset <= 36) {
-			System.out.println("This matchup is close for both teams");
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game");
+			printerString += ("This matchup is close for both teams" + "\n" + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game" + "\n");
 		}
 		//Good
 		else if(team1_Offensive_Offset >= 37 && team1_Offensive_Offset <= 49) {
-			System.out.println("With this matchup it is encouraged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score higher than normal");
+			printerString += ("With this matchup it is encouraged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score higher than normal" + "\n");
 		}
 		//Exceptional
 		else {
-			System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal");
+			printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal" + "\n");
 		}
 		
 	// Team1 QB offset
-		System.out.println("The " + team1.getName() + " have an overall qb rank of " + team1.getqbOfRank() + " and are up against The " + team2.getName() + " who have a qb defensive rank of " + team2.getqbDeRank() + ".");
+		printerString += ("The " + team1.getName() + " have an overall qb rank of " + team1.getqbOfRank() + " and are up against The " + team2.getName() + " who have a qb defensive rank of " + team2.getqbDeRank() + "." + "\n");
 		//Terrible
 		if(team1_QB_Offset >= 2 && team1_QB_Offset <= 16) {
-			System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal");
+			printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal" + "\n");
 		}
 		//Bad
 		else if(team1_QB_Offset >= 17 && team1_QB_Offset <= 30) {
-			System.out.println("With this matchup it is discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal");
+			printerString += ("With this matchup it is discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal" + "\n");
 		}
 		//Average
 		else if(team1_QB_Offset >= 31 && team1_QB_Offset <= 36) {
-			System.out.println("This matchup is close for both teams");
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game");
+			printerString += ("This matchup is close for both teams" + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game" + "\n");
 		}
 		//Good
 		else if(team1_QB_Offset >= 37 && team1_QB_Offset <= 49) {
-			System.out.println("With this matchup it is encouraged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score higher than normal");
+			printerString += ("With this matchup it is encouraged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score higher than normal" + "\n");
 		}
 		//Exceptional
 		else {
-			System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal");
+			printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal" + "\n");
 		}
 		
 	// Team1 RB offset
-		System.out.println("The " + team1.getName() + " have an overall rb rank of " + team1.getrbOfRank() + " and are up against The " + team2.getName() + " who have a qb defensive rank of " + team2.getrbDeRank() + ".");
+		printerString += ("The " + team1.getName() + " have an overall rb rank of " + team1.getrbOfRank() + " and are up against The " + team2.getName() + " who have a qb defensive rank of " + team2.getrbDeRank() + "." + "\n");
 		//Terrible
 		if(team1_RB_Offset >= 2 && team1_RB_Offset <= 16) {
-			System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal");
+			printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal" + "\n");
 		}
 		//Bad
 		else if(team1_RB_Offset >= 17 && team1_RB_Offset <= 30) {
-			System.out.println("With this matchup it is discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal");
+			printerString += ("With this matchup it is discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal" + "\n");
 		}
 		//Average
 		else if(team1_RB_Offset >= 31 && team1_RB_Offset <= 36) {
-			System.out.println("This matchup is close for both teams");
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game");
+			printerString += ("This matchup is close for both teams" + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game" + "\n");
 		}
 		//Good
 		else if(team1_RB_Offset >= 37 && team1_RB_Offset <= 49) {
-			System.out.println("With this matchup it is encouraged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score higher than normal");
+			printerString += ("With this matchup it is encouraged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score higher than normal" + "\n");
 		}
 		//Exceptional
 		else {
-			System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal");
+			printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal" + "\n");
 		}
 		
 	// Team1 WR offset
-		System.out.println("The " + team1.getName() + " have an overall wr rank of " + team1.getwrOfRank() + " and are up against The " + team2.getName() + " who have a wr defensive rank of " + team2.getwrDeRank() + ".");
+		printerString += ("The " + team1.getName() + " have an overall wr rank of " + team1.getwrOfRank() + " and are up against The " + team2.getName() + " who have a wr defensive rank of " + team2.getwrDeRank() + "." + "\n");
 		//Terrible
 		if(team1_WR_Offset >= 2 && team1_WR_Offset <= 16) {
-			System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal");
+			printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal" + "\n");
 		}
 		//Bad
 		else if(team1_WR_Offset >= 17 && team1_WR_Offset <= 30) {
-			System.out.println("With this matchup it is discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal");
+			printerString += ("With this matchup it is discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal" + "\n");
 		}
 		//Average
 		else if(team1_WR_Offset >= 31 && team1_WR_Offset <= 36) {
-			System.out.println("This matchup is close for both teams");
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game");
+			printerString += ("This matchup is close for both teams" + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game" + "\n");
 		}
 		//Good
 		else if(team1_WR_Offset >= 37 && team1_WR_Offset <= 49) {
-			System.out.println("With this matchup it is encouraged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score higher than normal");
+			printerString += ("With this matchup it is encouraged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score higher than normal" + "\n");
 		}
 		//Exceptional
 		else {
-			System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal");
+			printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal" + "\n");
 		}
 		
 	// Team1 TE offset
-		System.out.println("The " + team1.getName() + " have an overall te rank of " + team1.getteOfRank() + " and are up against The " + team2.getName() + " who have a te defensive rank of " + team2.getteDeRank() + ".");
+		printerString += ("The " + team1.getName() + " have an overall te rank of " + team1.getteOfRank() + " and are up against The " + team2.getName() + " who have a te defensive rank of " + team2.getteDeRank() + "." + "\n");
 		//Terrible
 		if(team1_WR_Offset >= 2 && team1_WR_Offset <= 16) {
-			System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal");
+			printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much lower than normal" + "\n");
 		}
 		//Bad
 		else if(team1_WR_Offset >= 17 && team1_WR_Offset <= 30) {
-			System.out.println("With this matchup it is discouarged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal");
+			printerString += ("With this matchup it is discouarged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score slightly lower than normal" + "\n");
 		}
 		//Average
 		else if(team1_WR_Offset >= 31 && team1_WR_Offset <= 36) {
-			System.out.println("This matchup is close for both teams");
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game");
+			printerString += ("This matchup is close for both teams" + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score close to thier average points per game" + "\n");
 		}
 		//Good
 		else if(team1_WR_Offset >= 37 && team1_WR_Offset <= 49) {
-			System.out.println("With this matchup it is encouraged to pick players from The" + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score higher than normal");
+			printerString += ("With this matchup it is encouraged to pick players from The" + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score higher than normal" + "\n");
 		}
 		//Exceptional
 		else {
-			System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName());
-			System.out.println("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal");
+			printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team1.getName() + "\n");
+			printerString += ("Fantasy players on The " + team1.getName() + " are expected to score much higher than normal" + "\n");
 		}
 	
 		
 		// Take a look at the offset for team 2
-		System.out.println("Deeper look into The " + team2.getName() + ":");
+		printerString += ("Deeper look into The " + team2.getName() + ":" + "\n");
 		
 		// Team2 overall offset
-				System.out.println("The " + team2.getName() + " have an overall offensive rank of " + team2.getOffensiveRank() + " and are up against The " + team1.getName() + " who have a defensive rank of " + team1.getDefensiveRank() + ".");
+				printerString += ("The " + team2.getName() + " have an overall offensive rank of " + team2.getOffensiveRank() + " and are up against The " + team1.getName() + " who have a defensive rank of " + team1.getDefensiveRank() + "." + "\n");
 				//Terrible
 				if(team2_Offensive_Offset >= 2 && team2_Offensive_Offset <= 16) {
-					System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal");
+					printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal" + "\n");
 				}
 				//Bad
 				else if(team2_Offensive_Offset >= 17 && team2_Offensive_Offset <= 30) {
-					System.out.println("With this matchup it is discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal");
+					printerString += ("With this matchup it is discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal" + "\n");
 				}
 				//Average
 				else if(team2_Offensive_Offset >= 31 && team2_Offensive_Offset <= 36) {
-					System.out.println("This matchup is close for both teams");
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game");
+					printerString += ("This matchup is close for both teams" + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game" + "\n");
 				}
 				//Good
 				else if(team2_Offensive_Offset >= 37 && team2_Offensive_Offset <= 49) {
-					System.out.println("With this matchup it is encouraged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score higher than normal");
+					printerString += ("With this matchup it is encouraged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score higher than normal" + "\n");
 				}
 				//Exceptional
 				else {
-					System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal");
+					printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal" + "\n");
 				}
 				
 				// Team2 QB offset
-				System.out.println("The " + team2.getName() + " have an overall qb rank of " + team2.getqbOfRank() + " and are up against The " + team2.getName() + " who have a qb defensive rank of " + team2.getqbDeRank() + ".");
+				printerString += ("The " + team2.getName() + " have an overall qb rank of " + team2.getqbOfRank() + " and are up against The " + team2.getName() + " who have a qb defensive rank of " + team2.getqbDeRank() + "." + "\n");
 				//Terrible
 				if(team2_QB_Offset >= 2 && team2_QB_Offset <= 16) {
-					System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal");
+					printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal" + "\n");
 				}
 				//Bad
 				else if(team2_QB_Offset >= 17 && team2_QB_Offset <= 30) {
-					System.out.println("With this matchup it is discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal");
+					printerString += ("With this matchup it is discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal" + "\n");
 				}
 				//Average
 				else if(team2_QB_Offset >= 31 && team2_QB_Offset <= 36) {
-					System.out.println("This matchup is close for both teams");
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game");
+					printerString += ("This matchup is close for both teams" + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game" + "\n");
 				}
 				//Good
 				else if(team2_QB_Offset >= 37 && team2_QB_Offset <= 49) {
-					System.out.println("With this matchup it is encouraged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score higher than normal");
+					printerString += ("With this matchup it is encouraged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score higher than normal" + "\n");
 				}
 				//Exceptional
 				else {
-					System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal");
+					printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal" + "\n");
 				}
 				
 			// Team2 RB offset
-				System.out.println("The " + team2.getName() + " have an overall rb rank of " + team2.getrbOfRank() + " and are up against The " + team2.getName() + " who have a qb defensive rank of " + team2.getrbDeRank() + ".");
+				printerString += ("The " + team2.getName() + " have an overall rb rank of " + team2.getrbOfRank() + " and are up against The " + team2.getName() + " who have a qb defensive rank of " + team2.getrbDeRank() + "." + "\n");
 				//Terrible
 				if(team2_RB_Offset >= 2 && team2_RB_Offset <= 16) {
-					System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal");
+					printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal" + "\n");
 				}
 				//Bad
 				else if(team2_RB_Offset >= 17 && team2_RB_Offset <= 30) {
-					System.out.println("With this matchup it is discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal");
+					printerString += ("With this matchup it is discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal" + "\n");
 				}
 				//Average
 				else if(team2_RB_Offset >= 31 && team2_RB_Offset <= 36) {
-					System.out.println("This matchup is close for both teams");
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game");
+					printerString += ("This matchup is close for both teams" + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game" + "\n");
 				}
 				//Good
 				else if(team2_RB_Offset >= 37 && team2_RB_Offset <= 49) {
-					System.out.println("With this matchup it is encouraged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score higher than normal");
+					printerString += ("With this matchup it is encouraged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score higher than normal" + "\n");
 				}
 				//Exceptional
 				else {
-					System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal");
+					printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal" + "\n");
 				}
 				
 			// Team2 WR offset
-				System.out.println("The " + team2.getName() + " have an overall wr rank of " + team2.getwrOfRank() + " and are up against The " + team2.getName() + " who have a wr defensive rank of " + team2.getwrDeRank() + ".");
+				printerString += ("The " + team2.getName() + " have an overall wr rank of " + team2.getwrOfRank() + " and are up against The " + team2.getName() + " who have a wr defensive rank of " + team2.getwrDeRank() + "." + "\n");
 				//Terrible
 				if(team2_WR_Offset >= 2 && team2_WR_Offset <= 16) {
-					System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal");
+					printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal" + "\n");
 				}
 				//Bad
 				else if(team2_WR_Offset >= 17 && team2_WR_Offset <= 30) {
-					System.out.println("With this matchup it is discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal");
+					printerString += ("With this matchup it is discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal" + "\n");
 				}
 				//Average
 				else if(team2_WR_Offset >= 31 && team2_WR_Offset <= 36) {
-					System.out.println("This matchup is close for both teams");
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game");
+					printerString += ("This matchup is close for both teams" + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game" + "\n");
 				}
 				//Good
 				else if(team2_WR_Offset >= 37 && team2_WR_Offset <= 49) {
-					System.out.println("With this matchup it is encouraged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score higher than normal");
+					printerString += ("With this matchup it is encouraged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score higher than normal" + "\n");
 				}
 				//Exceptional
 				else {
-					System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal");
+					printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal" + "\n");
 				}
 				
 			// Team2 TE offset
-				System.out.println("The " + team2.getName() + " have an overall te rank of " + team2.getteOfRank() + " and are up against The " + team2.getName() + " who have a te defensive rank of " + team2.getteDeRank() + ".");
+				printerString += ("The " + team2.getName() + " have an overall te rank of " + team2.getteOfRank() + " and are up against The " + team2.getName() + " who have a te defensive rank of " + team2.getteDeRank() + "." + "\n");
 				//Terrible
 				if(team2_WR_Offset >= 2 && team2_WR_Offset <= 16) {
-					System.out.println("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal");
+					printerString += ("With this extreme of a matchup it is strongly discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much lower than normal" + "\n");
 				}
 				//Bad
 				else if(team2_WR_Offset >= 17 && team2_WR_Offset <= 30) {
-					System.out.println("With this matchup it is discouarged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal");
+					printerString += ("With this matchup it is discouarged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score slightly lower than normal" + "\n");
 				}
 				//Average
 				else if(team2_WR_Offset >= 31 && team2_WR_Offset <= 36) {
-					System.out.println("This matchup is close for both teams");
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game");
+					printerString += ("This matchup is close for both teams" + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score close to thier average points per game" + "\n");
 				}
 				//Good
 				else if(team2_WR_Offset >= 37 && team2_WR_Offset <= 49) {
-					System.out.println("With this matchup it is encouraged to pick players from The" + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score higher than normal");
+					printerString += ("With this matchup it is encouraged to pick players from The" + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score higher than normal" + "\n");
 				}
 				//Exceptional
 				else {
-					System.out.println("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName());
-					System.out.println("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal");
+					printerString += ("With this extreme of a matchup it is strongly recommended to pick players from The " + team2.getName() + "\n");
+					printerString += ("Fantasy players on The " + team2.getName() + " are expected to score much higher than normal" + "\n");
 				}
+				return printerString;
 		
 	}
 	

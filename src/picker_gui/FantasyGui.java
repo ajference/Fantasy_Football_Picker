@@ -1,32 +1,16 @@
 package picker_gui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -38,7 +22,7 @@ import nfl.NFL;
 
 public class FantasyGui extends Application {
 
-	private Scene weeklyScene;
+//	private Scene weeklyScene;
 	private Button exit;
 	private Button back;
 	private Button home;
@@ -92,7 +76,7 @@ public class FantasyGui extends Application {
 		    grid.add(Team, 1, 2);
 		    
 		    
-		    weekly.setOnAction((event)-> {primaryStage.setScene(buildWeekMatchesScene(1, primaryStage));});
+		    weekly.setOnAction((event)-> {buildPlayerScene("Weekly", primaryStage);});
 		    
 		    Team.setOnAction((event) -> {System.out.println("test");});
 		    
@@ -176,12 +160,29 @@ public class FantasyGui extends Application {
 		    Button week16Button = createButton("Week 16");
 		    Button week17Button = createButton("Week 17");
 
+		    grid.add(week1Button, 0, 1);
+		    grid.add(week2Button, 0, 2);
+		    grid.add(week3Button, 0, 3);
+		    grid.add(week4Button, 0, 4);
+		    grid.add(week5Button, 0, 5);
+		    grid.add(week6Button, 0, 6);
+		    grid.add(week7Button, 0, 7);
+		    grid.add(week8Button, 0, 8);
+		    grid.add(week9Button, 0, 9);
+		    grid.add(week10Button, 0, 10);
+		    grid.add(week11Button, 0, 11);
+		    grid.add(week12Button, 0, 12);
+		    grid.add(week13Button, 0, 13);
+		    grid.add(week14Button, 0, 14);
+		    grid.add(week15Button, 0, 15);
+		    grid.add(week16Button, 0, 16);
+		    grid.add(week17Button, 0, 17);
 		   switch (e) {
 		   
 		   case "Weekly":
 			Text scenetitle = new Text("Pick a Week");
 			scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-			grid.add(scenetitle, 0, 0, 0, 0);
+			grid.add(scenetitle, 0, 0, 1, 1);
 			week1Button.setOnAction((event)-> {buildWeekMatchesScene(1, main);});
 		    week2Button.setOnAction((event)-> {buildWeekMatchesScene(2, main);});
 		    week3Button.setOnAction((event)-> {buildWeekMatchesScene(3, main);});
@@ -227,14 +228,13 @@ public class FantasyGui extends Application {
 		   }
 		   
 		   
-		   
-		    Scene players = new Scene(grid, 300, 275);
+		   ScrollPane scrollPane = new ScrollPane(grid);
+		    Scene players = new Scene(scrollPane, 300, 275);
 		    main.setScene(players);
 		}
 	
 	
 	public Scene buildWeekMatchesScene(int i, Stage prim) {
-		String temp; 
 		GridPane grid = new GridPane();
 	    grid.setAlignment(Pos.CENTER);
 	    grid.setHgap(10);
@@ -242,7 +242,7 @@ public class FantasyGui extends Application {
 	    grid.setPadding(new Insets(25, 25, 25, 25));
 	    Text scenetitle = new Text("Pick A Match To Get More Info");
 	    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-	    grid.add(scenetitle, 0, 0, 0, 0);
+	    grid.add(scenetitle, 0, 0, 1, 1);
 		ArrayList<String> matches = nfl.printWeeklySchedule(i);
 
 		    for (int r = 0; r < matches.size(); r++) {
@@ -254,10 +254,12 @@ public class FantasyGui extends Application {
 		    	    grid2.setPadding(new Insets(25, 25, 25, 25));
 		    	    Text scenetitle2 = new Text("Stats for the"+ matches.get(r) + " Match");
 		    	    scenetitle2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-		    	    grid2.add(scenetitle2, 0, 0, 0, 0);
-		            Label name = new Label("");//nfl.teamComparison(1, r););
-		            button.setOnAction((event) -> {prim.setScene(new Scene(name, 450, 375));});
-		            grid.add(button, 0, r);
+		    	    grid2.add(scenetitle2, 0, 0, 1, 1);
+		            Label name = new Label(nfl.teamComparison(i, (r+1)));
+		            grid2.add(name,0,1);
+		            ScrollPane scrollPane2 = new ScrollPane(grid2);
+		            button.setOnAction((event) -> {prim.setScene(new Scene(scrollPane2, 750, 375));});
+		            grid.add(button, 0, (r+1));
 		            
 		    }
 		    
@@ -266,7 +268,7 @@ public class FantasyGui extends Application {
 
 		   Scene MatchScenes = new Scene(scrollPane, 450, 375);
 
-          
+		   prim.setScene(MatchScenes);
 		return MatchScenes;
 		
 	}
