@@ -807,20 +807,21 @@ public static String teamComparison(int week, int match){
 		textArea.append("1 Tight End\n2 Wide receivers\n3 Running Back\n4 Quarterback\n5 Defense and Special Teams\n");
 	}
 		
-	public static void printPlayerPosition(int team, int position, int numPlayers){
+	public static ArrayList<Player> printPlayerPosition(int team, int position, int numPlayers){
 		String[] positionName = new String[]{"Tight End", " Wide receivers","Running Back","Quarterback","Defense and Special Teams", "TE", "WR", "RB", "QB", "DST"}; 
 		playerPositions = files.getPlayerPositions();
 		teamPositions = files.getTeamPositions();
 		teamNames = files.getTeamMap();
-		
 		playerList = new ArrayList<Player>();
+		
+		ArrayList<Player> topPlayers = new ArrayList<Player>();
 		
 		if (team == 0) {
 			if (position == 0) {
 				Collections.sort(playerList); 
 				playerList = files.getPlayerList();
 				for (int x = 0; x <  playerList.size(); ++x) {
-					System.out.println((x+1)+ " " + playerList.get(x).getName());
+					topPlayers.add(playerList.get(x));
 				}
 			}
 			else {
@@ -829,12 +830,12 @@ public static String teamComparison(int week, int match){
 			//System.out.println("The List of "+ positionName[position-1]+ " players");
 			if (numPlayers < playerList.size()) {
 			for (int x = 0; x < numPlayers; ++x) {
-				System.out.println((x+1)+ " " +playerList.get(x).getName());
+				topPlayers.add(playerList.get(x));
 			}
 			}
 			else {
 				for (int x = 0; x <  playerList.size(); ++x) {
-					System.out.println((x+1)+ " " + playerList.get(x).getName()); //+ " " + playerList.get(x).getPlayerCost());
+					topPlayers.add(playerList.get(x)); //+ " " + playerList.get(x).getPlayerCost());
 				}
 			}
 			}
@@ -845,15 +846,16 @@ public static String teamComparison(int week, int match){
 			//System.out.println("The list of "+ positionName[position - 1] + " players for the "+teamNames.get(team)+"s");
 			if (numPlayers < playerList.size()) {
 				for (int x = 0; x < numPlayers; ++x) {
-					System.out.println((x+1)+ " " + playerList.get(x).getName());
+					topPlayers.add(playerList.get(x));
 				}
 			}
 			else {
 			for (int x = 0; x < playerList.size(); ++x) {
-				System.out.println((x+1)+ " " + playerList.get(x).getName());
+				topPlayers.add(playerList.get(x));
 			}
 			}	
 		}
+		return topPlayers;
 	}
 	
 	public static void printPlayerPosition1(int team, int position, int numPlayers){
