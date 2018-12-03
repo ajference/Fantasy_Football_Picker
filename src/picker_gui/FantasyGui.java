@@ -1,5 +1,11 @@
 package picker_gui;
 
+import java.awt.Point;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import dataCollection.CalculateRanks;
@@ -8,7 +14,10 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
@@ -20,6 +29,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import nfl.NFL;
 import nfl.Player;
@@ -49,8 +60,7 @@ public class FantasyGui extends Application {
 	
 	
 	public void start(Stage primaryStage) throws Exception{
-			//stage set up
-			myTeam = new  ArrayList<Player>();
+			myTeam = loadData();
 			nfl = new NFL();
 			primaryStage.setTitle("Fantasy Football Picker");
 		    primaryStage.show(); 
@@ -68,8 +78,6 @@ public class FantasyGui extends Application {
 		    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		    grid.add(scenetitle, 0, 0, 2, 1);
 		    Button exit = createButton("Exit");
-			Button back = createButton("Back");
-			Button home = createButton("Home");
 		    weekly = createButton("Weekly Schedule");
 		    Team = createButton("My Team");
 		    Players = createButton("Top Players");
@@ -87,41 +95,14 @@ public class FantasyGui extends Application {
 		    
 		    exit.setOnAction((event)-> {System.exit(0);});
 		    
-		    home.setOnAction((event)-> {primaryStage.setScene(main);});
-		    
 		    weekly.setOnAction((event)-> {primaryStage.setScene(Weekly);});
 		    
 		    Players.setOnAction((event) -> {primaryStage.setScene(Player);});
 		    
-		    Team.setOnAction((event) -> {primaryStage.setScene(creatQB(primaryStage));});
+		    Team.setOnAction((event) -> {primaryStage.setScene(displayMyTeam(primaryStage, " "));});
 		    
-		    Pick.setOnAction((event) -> {System.out.println("test");});
-		    
-		    /*
-		      table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-                  if (newSelection != null) {
-                     String week  = (String) newSelection;
-           
-                   //  primaryStage.setScene(menu);
-                  }
-              });*/
-		    
-		    
-		    
-//		    Label userName = new Label("User Name:");
-//		    grid.add(userName, 0, 1);
-//
-//		    TextField userTextField = new TextField();
-//		    grid.add(userTextField, 1, 1);
-//
-//		    Label pw = new Label("Password:");
-//		    grid.add(pw, 0, 2);
-//
-//		    PasswordField pwBox = new PasswordField();
-//		    grid.add(pwBox, 1, 2);
-		    
-		   // primaryStage.setScene(main);
-			
+		    Pick.setOnAction((event) -> {if (Error4() == true) {myTeam = new ArrayList<Player>(); saveData(myTeam); primaryStage.setScene(startGuru(primaryStage));}});
+
 }
 	
 	
@@ -352,36 +333,92 @@ public class FantasyGui extends Application {
 	
 	
 	
-	
-	//My Team
-	
-	public Scene creatQB(Stage prim) {
+
+	public Scene startGuru(Stage prim) {
 		GridPane grid = new GridPane();
 	    grid.setAlignment(Pos.CENTER);
 	    grid.setHgap(10);
 	    grid.setVgap(10);
 	    grid.setPadding(new Insets(25, 25, 25, 25));
-	    Text scenetitle = new Text("Pick A Quarterback");
+	    Text scenetitle = new Text("The Pick Guru");
 	    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	    grid.add(scenetitle, 0, 0, 1, 1);
 	    HBox hbBtn = new HBox(10);
 	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 	    Button exit = createButton("Exit");
+	    Button back = createButton("Back");
 		Button home = createButton("Home");
 		exit.setOnAction((event)-> {System.exit(0);});
 	    home.setOnAction((event)-> {prim.setScene(main);});
+	    back.setOnAction((event)-> {prim.setScene(main);});
 	    hbBtn.getChildren().add(exit);
 	    hbBtn.getChildren().add(home);
-	    ArrayList<Player> topPlayers = nfl.printPlayerPosition(0, 4, 15);
-	    grid.add(hbBtn, 0, topPlayers.size());
+	    Label info = new Label("This is the Pick guru. This application walks you though the the process\nof picking a team. This is for less experienced users; to use the more\n experienced method then access it with the ~My Team~ menu located on the\n home page.");
+	    grid.add(info, 0, 1);
+	    Button button = createButton("Start");
+	    button.setOnAction((event) -> {prim.setScene(creatQB(prim, "Guru"));});
+	    grid.add(button, 0, 2);  
+	    	
+		
+	    ScrollPane scrollPane = new ScrollPane(grid);
+	    Scene teamStart = new Scene(scrollPane, 450, 375);
+	    return teamStart;
+	}
+	
+	
+	
+	
+	
+	
+	public Scene creatQB(Stage prim, String q) {
+		myTeam = new ArrayList<Player>();
+		GridPane grid = new GridPane();
+	    grid.setAlignment(Pos.CENTER);
+	    grid.setHgap(10);
+	    grid.setVgap(10);
+	    grid.setPadding(new Insets(25, 25, 25, 25));
+	    HBox hbBtn = new HBox(10);
+	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+	    Button exit = createButton("Exit");
+		Button home = createButton("Home");
+		exit.setOnAction((event)-> {if (Error() == true) {myTeam = new ArrayList<Player>(); System.exit(0);}});
+	    home.setOnAction((event)-> {if (Error2() == true) {myTeam = new ArrayList<Player>(); prim.setScene(main);}});
+	    hbBtn.getChildren().add(exit);
+	    hbBtn.getChildren().add(home);
+	    ArrayList<Player> topPlayers = new ArrayList<Player>();
+	    Text scenetitle;
+	    switch (q) {
+		   
+		   case "teamPick":
+		scenetitle = new Text("Pick A Quarterback");
+		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		grid.add(scenetitle, 0, 0, 1, 1);
+	    topPlayers = nfl.printPlayerPosition(0, 4, 15, myTeam);
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    for (int r = 0; r < topPlayers.size(); r++) {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
-           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatRB(prim));});
+           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatRB(prim, q));});
             grid.add(button, 0, (r+1));   
-    }
+	    }
+	    break;
 	    
-	    
+		   case "Guru":
+			   	scenetitle = new Text("Pick A Quarterback");
+			   	Label info = new Label("This is where you pick a Quarterback. To make it easy here are\n the top five QB's for this season.");
+				scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+				grid.add(scenetitle, 0, 0, 1, 1);
+				grid.add(info, 0,1);
+			   topPlayers = nfl.printPlayerPosition(0, 4, 5, myTeam);
+			    grid.add(hbBtn, 0, topPlayers.size()+3);
+			    for (int r = 0; r < topPlayers.size(); r++) {
+		            Button button = createButton((topPlayers.get(r).getName()));
+		            Player p = topPlayers.get(r);
+		           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatRB(prim,q));});
+		            grid.add(button, 0, (r+2)); 
+			    }
+			   break;
+	    }
 	    
 	    
 	    ScrollPane scrollPane = new ScrollPane(grid);
@@ -389,32 +426,55 @@ public class FantasyGui extends Application {
 	    return QBScene;
 	}
 	
-	public Scene creatRB(Stage prim) {
+	public Scene creatRB(Stage prim, String q) {
 		GridPane grid = new GridPane();
 	    grid.setAlignment(Pos.CENTER);
 	    grid.setHgap(10);
 	    grid.setVgap(10);
 	    grid.setPadding(new Insets(25, 25, 25, 25));
-	    Text scenetitle = new Text("Pick A Running Back");
-	    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-	    grid.add(scenetitle, 0, 0, 1, 1);
 	    HBox hbBtn = new HBox(10);
 	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 	    Button exit = createButton("Exit");
 		Button home = createButton("Home");
-		exit.setOnAction((event)-> {System.exit(0);});
-	    home.setOnAction((event)-> {prim.setScene(main);});
+		exit.setOnAction((event)-> {if (Error() == true) {myTeam = new ArrayList<Player>(); System.exit(0);}});
+	    home.setOnAction((event)-> {if (Error2() == true) {myTeam = new ArrayList<Player>(); prim.setScene(main);}});
 	    hbBtn.getChildren().add(exit);
 	    hbBtn.getChildren().add(home);
-	    ArrayList<Player> topPlayers = nfl.printPlayerPosition(0, 3, 15);
-	    grid.add(hbBtn, 0, topPlayers.size());
+	    ArrayList<Player> topPlayers;
+	    Text scenetitle;
+	    switch (q) {
+		   
+		   case "teamPick":
+		scenetitle = new Text("Pick A Running Back");
+		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		grid.add(scenetitle, 0, 0, 1, 1);
+	    topPlayers = nfl.printPlayerPosition(0, 3, 15, myTeam);
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    for (int r = 0; r < topPlayers.size(); r++) {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
-            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR(prim));});
+           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR1(prim, q));});
             grid.add(button, 0, (r+1));   
-    }
+	    }
+	    break;
 	    
+		   case "Guru":
+			   	scenetitle = new Text("Pick A Running Back");
+			   	Label info = new Label("This is where you pick a Running Back. To make it easy here are\n the top five RB's for this season.");
+				scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+				grid.add(scenetitle, 0, 0, 1, 1);
+				grid.add(info, 0,1);
+			   topPlayers = nfl.printPlayerPosition(0, 3, 5, myTeam);
+			    grid.add(hbBtn, 0, topPlayers.size()+3);
+			    for (int r = 0; r < topPlayers.size(); r++) {
+		            Button button = createButton((topPlayers.get(r).getName()));
+		            Player p = topPlayers.get(r);
+		           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR1(prim,q));});
+		            grid.add(button, 0, (r+2)); 
+			    }
+				   break;
+	    }
+	     
 	    
 	    
 	    
@@ -423,13 +483,235 @@ public class FantasyGui extends Application {
 	    return RBScene;
 	}
 
-	public Scene creatWR(Stage prim) {
+	public Scene creatWR1(Stage prim, String q) {
 		GridPane grid = new GridPane();
 	    grid.setAlignment(Pos.CENTER);
 	    grid.setHgap(10);
 	    grid.setVgap(10);
 	    grid.setPadding(new Insets(25, 25, 25, 25));
-	    Text scenetitle = new Text("Pick A Running Back");
+	    HBox hbBtn = new HBox(10);
+	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+	    Button exit = createButton("Exit");
+		Button home = createButton("Home");
+		exit.setOnAction((event)-> {if (Error() == true) {myTeam = new ArrayList<Player>(); System.exit(0);}});
+	    home.setOnAction((event)-> {if (Error2() == true) {myTeam = new ArrayList<Player>(); prim.setScene(main);}});
+	    hbBtn.getChildren().add(exit);
+	    hbBtn.getChildren().add(home);
+	    ArrayList<Player> topPlayers;
+	    Text scenetitle;
+	    switch (q) {
+		   
+		   case "teamPick":
+		scenetitle = new Text("Pick Three Wide receivers");
+		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		grid.add(scenetitle, 0, 0, 1, 1);
+	    topPlayers = nfl.printPlayerPosition(0, 2, 15, myTeam);
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
+	    for (int r = 0; r < topPlayers.size(); r++) {
+            Button button = createButton((topPlayers.get(r).getName()));
+            Player p = topPlayers.get(r);
+           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR2(prim, q));});
+            grid.add(button, 0, (r+1));   
+	    }
+	    break;
+	    
+		   case "Guru":
+			   	scenetitle = new Text("Pick Three Wide receivers");
+			   	Label info = new Label("This is where you pick the Wide receivers. There are 3 WR's in a fantasy\n football team. To make it easy here are the top five WR's for this season.");
+				scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+				grid.add(scenetitle, 0, 0, 1, 1);
+				grid.add(info, 0,1);
+			   topPlayers = nfl.printPlayerPosition(0, 2, 5, myTeam);
+			    grid.add(hbBtn, 0, topPlayers.size()+3);
+			    for (int r = 0; r < topPlayers.size(); r++) {
+		            Button button = createButton((topPlayers.get(r).getName()));
+		            Player p = topPlayers.get(r);
+		           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR2(prim,q));});
+		            grid.add(button, 0, (r+2)); 
+			    }
+				   break;
+	    }
+	    
+	    ScrollPane scrollPane = new ScrollPane(grid);
+	    Scene WR1Scene = new Scene(scrollPane, 450, 375);
+	    return WR1Scene;
+	}
+	
+	public Scene creatWR2(Stage prim, String q) {
+		GridPane grid = new GridPane();
+	    grid.setAlignment(Pos.CENTER);
+	    grid.setHgap(10);
+	    grid.setVgap(10);
+	    grid.setPadding(new Insets(25, 25, 25, 25));
+	    HBox hbBtn = new HBox(10);
+	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+	    Button exit = createButton("Exit");
+		Button home = createButton("Home");
+		exit.setOnAction((event)-> {if (Error() == true) {myTeam = new ArrayList<Player>(); System.exit(0);}});
+	    home.setOnAction((event)-> {if (Error2() == true) {myTeam = new ArrayList<Player>(); prim.setScene(main);}});
+	    hbBtn.getChildren().add(exit);
+	    hbBtn.getChildren().add(home);
+	    ArrayList<Player> topPlayers;
+	    Text scenetitle;
+	    switch (q) {
+		   
+		   case "teamPick":
+		scenetitle = new Text("Pick Two Wide receivers");
+		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		grid.add(scenetitle, 0, 0, 1, 1);
+	    topPlayers = nfl.printPlayerPosition(0, 2, 15, myTeam);
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
+	    for (int r = 0; r < topPlayers.size(); r++) {
+            Button button = createButton((topPlayers.get(r).getName()));
+            Player p = topPlayers.get(r);
+           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR3(prim, q));});
+            grid.add(button, 0, (r+1));   
+	    }
+	    break;
+	    
+		   case "Guru":
+			   	scenetitle = new Text("Pick Two Wide receivers");
+			   	Label info = new Label(myTeam.get(2).getName() + " was picked and removed from the list, here are five more.");
+				scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+				grid.add(scenetitle, 0, 0, 1, 1);
+				grid.add(info, 0,1);
+			   topPlayers = nfl.printPlayerPosition(0, 2, 5, myTeam);
+			    grid.add(hbBtn, 0, topPlayers.size()+3);
+			    for (int r = 0; r < topPlayers.size(); r++) {
+		            Button button = createButton((topPlayers.get(r).getName()));
+		            Player p = topPlayers.get(r);
+		           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR3(prim,q));});
+		            grid.add(button, 0, (r+2)); 
+			    }
+				   break;
+	    }
+
+	    
+	    ScrollPane scrollPane = new ScrollPane(grid);
+	    Scene WR2Scene = new Scene(scrollPane, 450, 375);
+	    return WR2Scene;
+	}
+	
+	public Scene creatWR3(Stage prim, String q) {
+		GridPane grid = new GridPane();
+	    grid.setAlignment(Pos.CENTER);
+	    grid.setHgap(10);
+	    grid.setVgap(10);
+	    grid.setPadding(new Insets(25, 25, 25, 25));
+	    HBox hbBtn = new HBox(10);
+	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+	    Button exit = createButton("Exit");
+		Button home = createButton("Home");
+		exit.setOnAction((event)-> {if (Error() == true) {myTeam = new ArrayList<Player>(); System.exit(0);}});
+	    home.setOnAction((event)-> {if (Error2() == true) {myTeam = new ArrayList<Player>(); prim.setScene(main);}});
+	    hbBtn.getChildren().add(exit);
+	    hbBtn.getChildren().add(home);
+	    ArrayList<Player> topPlayers;
+	    Text scenetitle;
+	    switch (q) {
+		   
+		   case "teamPick":
+		scenetitle = new Text("Pick the Final Wide receiver");
+		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		grid.add(scenetitle, 0, 0, 1, 1);
+	    topPlayers = nfl.printPlayerPosition(0, 2, 15, myTeam);
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
+	    for (int r = 0; r < topPlayers.size(); r++) {
+            Button button = createButton((topPlayers.get(r).getName()));
+            Player p = topPlayers.get(r);
+           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatTE(prim, q));});
+            grid.add(button, 0, (r+1));   
+	    }
+	    break;
+	    
+		   case "Guru":
+			   	scenetitle = new Text("Pick the Final Wide receiver");
+			   	Label info = new Label(myTeam.get(2).getName() +" and " +myTeam.get(3).getName() +" were picked and removed from the\n list, here are five more for your last WB.");
+				scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+				grid.add(scenetitle, 0, 0, 1, 1);
+				grid.add(info, 0,1);
+			   topPlayers = nfl.printPlayerPosition(0, 2, 5, myTeam);
+			    grid.add(hbBtn, 0, topPlayers.size()+3);
+			    for (int r = 0; r < topPlayers.size(); r++) {
+		            Button button = createButton((topPlayers.get(r).getName()));
+		            Player p = topPlayers.get(r);
+		           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatTE(prim,q));});
+		            grid.add(button, 0, (r+2)); 
+			    }
+				   break;
+	    }	    
+	    
+	    
+	    ScrollPane scrollPane = new ScrollPane(grid);
+	    Scene WR3Scene = new Scene(scrollPane, 450, 375);
+	    return WR3Scene;
+	}
+	
+	public Scene creatTE(Stage prim, String q) {
+		GridPane grid = new GridPane();
+	    grid.setAlignment(Pos.CENTER);
+	    grid.setHgap(10);
+	    grid.setVgap(10);
+	    grid.setPadding(new Insets(25, 25, 25, 25));
+	    HBox hbBtn = new HBox(10);
+	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+	    Button exit = createButton("Exit");
+		Button home = createButton("Home");
+		exit.setOnAction((event)-> {if (Error() == true) {myTeam = new ArrayList<Player>(); System.exit(0);}});
+	    home.setOnAction((event)-> {if (Error2() == true) {myTeam = new ArrayList<Player>(); prim.setScene(main);}});
+	    hbBtn.getChildren().add(exit);
+	    hbBtn.getChildren().add(home);
+	    ArrayList<Player> topPlayers;
+	    Text scenetitle;
+	    switch (q) {
+		   
+		   case "teamPick":
+		scenetitle = new Text("Pick A Tight End");
+		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		grid.add(scenetitle, 0, 0, 1, 1);
+	    topPlayers = nfl.printPlayerPosition(0, 1, 15, myTeam);
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
+	    for (int r = 0; r < topPlayers.size(); r++) {
+            Button button = createButton((topPlayers.get(r).getName()));
+            Player p = topPlayers.get(r);
+           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(displayMyTeam(prim, q));});
+            grid.add(button, 0, (r+1));   
+	    }
+	    break;
+	    
+		   case "Guru":
+			   	scenetitle = new Text("Pick A Tight End");
+			   	Label info = new Label("This is where you pick a Tight End. To make it easy here are the top five\n TE's for this season.");
+				scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+				grid.add(scenetitle, 0, 0, 1, 1);
+				grid.add(info, 0,1);
+			   topPlayers = nfl.printPlayerPosition(0, 1, 5, myTeam);
+			    grid.add(hbBtn, 0, topPlayers.size()+3);
+			    for (int r = 0; r < topPlayers.size(); r++) {
+		            Button button = createButton((topPlayers.get(r).getName()));
+		            Player p = topPlayers.get(r);
+		           button.setOnAction((event) -> {myTeam.add(p); prim.setScene(displayMyTeam(prim,q));});
+		            grid.add(button, 0, (r+2)); 
+			    }
+				   break;
+	    }	    
+
+	    
+	    ScrollPane scrollPane = new ScrollPane(grid);
+	    scrollPane.setVvalue(0);
+	    Scene TEScene = new Scene(scrollPane, 450, 375);
+	    return TEScene;
+	}
+	
+	
+	public Scene displayMyTeam(Stage prim, String q) {
+		saveData(myTeam);
+		GridPane grid = new GridPane();
+	    grid.setAlignment(Pos.CENTER);
+	    grid.setHgap(10);
+	    grid.setVgap(10);
+	    grid.setPadding(new Insets(25, 25, 25, 25));
+	    Text scenetitle = new Text("This is Your Team");
 	    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	    grid.add(scenetitle, 0, 0, 1, 1);
 	    HBox hbBtn = new HBox(10);
@@ -440,21 +722,179 @@ public class FantasyGui extends Application {
 	    home.setOnAction((event)-> {prim.setScene(main);});
 	    hbBtn.getChildren().add(exit);
 	    hbBtn.getChildren().add(home);
-	    ArrayList<Player> topPlayers = nfl.printPlayerPosition(0, 3, 15);
-	    grid.add(hbBtn, 0, topPlayers.size());
-	    for (int r = 0; r < topPlayers.size(); r++) {
-            Button button = createButton((topPlayers.get(r).getName()));
-            Player p = topPlayers.get(r);
-            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatRB(prim));});
-            grid.add(button, 0, (r+1));   
-    }
+	    if (myTeam.size() == 0) {
+	    	Label info = new Label("Looks Like you don't have a team yet, choose what you want to build you Team With:");
+	    	grid.add(info, 0, 1);
+	    	 Button button = createButton("Pick Guru");
+	         button.setOnAction((event) -> {prim.setScene(creatQB(prim, "Guru"));});
+	         grid.add(button, 0, 2); 
+	         Button button2 = createButton("Experienced Team builder");
+	         button2.setOnAction((event) -> {prim.setScene(creatQB(prim, "teamPick"));});
+	         grid.add(button2, 0, 3); 
+	    	
+	    }
+	    else {
+	    Label info2 = new Label("Click on a player to get more stats on them.)");
+	    grid.add(info2, 0, 1);
+	    grid.add(hbBtn, 0, 16);
+	    Label QB = new Label("Your Quarterback");
+	    grid.add(QB, 0, 2);
+	    Button button = createButton((myTeam.get(0).getName()));
+        Player p = myTeam.get(0);
+        String play = ("https://www.teamrankings.com/nfl/player/" + (p.getName()).toLowerCase().replaceAll( "\\s+", "-"));
+        button.setOnAction((event) -> {createWindow(play);});
+        grid.add(button, 0, 3); 
+        
+	    Label RB = new Label("Your Running back");
+	    grid.add(RB, 0, 4);
+	    Button button2 = createButton((myTeam.get(1).getName()));
+        p = myTeam.get(1);
+        String play2 = ("https://www.teamrankings.com/nfl/player/" + (p.getName()).toLowerCase().replaceAll( "\\s+", "-"));
+        button2.setOnAction((event) -> {createWindow(play2);});
+        grid.add(button2, 0, 5);
+        
+	    Label WR = new Label("Your Wide receivers");
+	    grid.add(WR, 0, 6);
+	    Button button3 = createButton((myTeam.get(2).getName()));
+        p = myTeam.get(2);
+        String play3 = ("https://www.teamrankings.com/nfl/player/" + (p.getName()).toLowerCase().replaceAll( "\\s+", "-"));
+        button3.setOnAction((event) -> {createWindow(play3);});
+        grid.add(button3, 0, 7);
+        
+        Button button4 = createButton((myTeam.get(3).getName()));
+        p = myTeam.get(3);
+        String play4 = ("https://www.teamrankings.com/nfl/player/" + (p.getName()).toLowerCase().replaceAll( "\\s+", "-"));
+        button4.setOnAction((event) -> {createWindow(play4);});
+        grid.add(button4, 0, 8);
+        
+        Button button5 = createButton((myTeam.get(4).getName()));
+        p = myTeam.get(4);
+        String play5 = ("https://www.teamrankings.com/nfl/player/" + (p.getName()).toLowerCase().replaceAll( "\\s+", "-"));
+        button5.setOnAction((event) -> { createWindow(play5);});
+        grid.add(button5, 0, 9);
+        
+	    Label TE = new Label("Your Tight End");
+	    grid.add(TE, 0, 10);
+	    Button button6 = createButton((myTeam.get(5).getName()));
+        p = myTeam.get(5);
+        String play6 = ("https://www.teamrankings.com/nfl/player/" + (p.getName()).toLowerCase().replaceAll( "\\s+", "-"));
+        button6.setOnAction((event) -> {createWindow(play6);});
+        grid.add(button6, 0, 11);
 	    
+		
+    	Label info = new Label("If you want to build a new team then pick one of the below buttons\n with the method you want to use to build it with.");
+    	grid.add(info, 0, 13);
+    	 Button button7 = createButton("Pick Guru");
+         button7.setOnAction((event) -> {if (Error3() == true) {prim.setScene(creatQB(prim, "Guru"));myTeam = new ArrayList<Player>(); saveData(myTeam);}});
+         grid.add(button7, 0, 14); 
+         Button button8 = createButton("Experienced Team builder");
+         button8.setOnAction((event) -> {if (Error3() == true) {prim.setScene(creatQB(prim, "teamPick")); myTeam = new ArrayList<Player>(); saveData(myTeam);}});
+         grid.add(button8, 0, 15); 
+	    }
 	    
-	    
-	    
-	    ScrollPane scrollPane = new ScrollPane(grid);
-	    Scene RBScene = new Scene(scrollPane, 450, 375);
-	    return RBScene;
+		ScrollPane scrollPane = new ScrollPane(grid);
+	    Scene showMyTeam = new Scene(scrollPane, 450, 375);
+	    return showMyTeam;
+	}
+	
+	public void createWindow(String e) {
+		Stage playerStats = new Stage();
+		playerStats.setTitle("Player Stats");
+        WebView webView = new WebView();
+        final WebEngine webEngine = webView.getEngine();
+        webEngine.load(e);
+        playerStats.show();
+        ScrollPane scrollPane = new ScrollPane(webView);
+	    Scene showMyTeam = new Scene(scrollPane, 450, 375);
+	    playerStats.setScene(showMyTeam);
+	}
+	
+	public Boolean Error() {
+	Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to exit? This will delete the team you are building.", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+	alert.showAndWait();
+
+	if (alert.getResult() == ButtonType.YES) {
+	    return true;
+	}
+	return false;
+	}
+	
+	public Boolean Error2() {
+		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to go home? This will delete the team you are building.", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+		alert.showAndWait();
+
+		if (alert.getResult() == ButtonType.YES) {
+		    return true;
+		}
+		return false;
+		}
+	
+	public Boolean Error3() {
+		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to build a new team? This will delete your old team.", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+		alert.showAndWait();
+
+		if (alert.getResult() == ButtonType.YES) {
+		    return true;
+		}
+		return false;
+		}
+	public Boolean Error4() {
+		if (myTeam.size() != 0) {
+		Alert alert = new Alert(AlertType.CONFIRMATION, "Looks like you already have a Team. Using Pick Guru will delete your old team. Are you sure you want to use Pick Guru?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+		alert.showAndWait();
+
+		if (alert.getResult() == ButtonType.YES) {
+		    return true;
+		}
+		else {
+		return false;
+		}
+		}
+		else {
+		return true;	
+		}
+		}
+	
+	public static void saveData(ArrayList<Player> e) {
+		try {
+			FileOutputStream fileOut = new FileOutputStream("YourTeam.ser");
+			if (e.size() == 0) {
+				fileOut.write(("").getBytes());
+				fileOut.close();
+			}
+			else {
+			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+			objOut.writeObject(e);
+			fileOut.close();
+			}
+			
+		}
+		catch (IOException ex){
+			ex.printStackTrace();
+		}
+		
+	}
+
+	public static ArrayList<Player> loadData() {
+		FileInputStream fileIn = null;
+		ObjectInputStream objIn= null;
+		ArrayList<Player> player = new ArrayList<Player>();
+
+		try {
+			fileIn = new FileInputStream("YourTeam.ser");
+			objIn = new ObjectInputStream(fileIn);
+			player = (ArrayList<Player>) objIn.readObject();
+			fileIn.close();
+		}
+		catch (IOException ex){
+			player = new ArrayList<Player>();
+			//ex.printStackTrace();
+		}
+		catch (ClassNotFoundException c) {
+			player = new ArrayList<Player>();
+			//c.printStackTrace();
+		}
+		return player;
 	}
 	
 	

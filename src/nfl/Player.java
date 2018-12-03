@@ -1,6 +1,8 @@
 package nfl;
 
-public class Player implements Comparable<Player> {
+import java.io.Serializable;
+
+public class Player implements Comparable<Player>, Serializable {
 	String name;
 	String team;
 	String position;

@@ -807,8 +807,8 @@ public static String teamComparison(int week, int match){
 		textArea.append("1 Tight End\n2 Wide receivers\n3 Running Back\n4 Quarterback\n5 Defense and Special Teams\n");
 	}
 		
-	public static ArrayList<Player> printPlayerPosition(int team, int position, int numPlayers){
-		String[] positionName = new String[]{"Tight End", " Wide receivers","Running Back","Quarterback","Defense and Special Teams", "TE", "WR", "RB", "QB", "DST"}; 
+	public static ArrayList<Player> printPlayerPosition(int team, int position, int numPlayers, ArrayList<Player> p){
+		String[] positionName = new String[]{"Tight End", "Wide receivers","Running Back","Quarterback","Defense and Special Teams", "TE", "WR", "RB", "QB", "DST"}; 
 		playerPositions = files.getPlayerPositions();
 		teamPositions = files.getTeamPositions();
 		teamNames = files.getTeamMap();
@@ -830,12 +830,22 @@ public static String teamComparison(int week, int match){
 			//System.out.println("The List of "+ positionName[position-1]+ " players");
 			if (numPlayers < playerList.size()) {
 			for (int x = 0; x < numPlayers; ++x) {
+				if (p.contains(playerList.get(x))) {
+					++numPlayers;
+				}
+				else {
 				topPlayers.add(playerList.get(x));
+				}
 			}
 			}
 			else {
 				for (int x = 0; x <  playerList.size(); ++x) {
-					topPlayers.add(playerList.get(x)); //+ " " + playerList.get(x).getPlayerCost());
+					if (p.contains(playerList.get(x))) {
+						++numPlayers;
+					}
+					else {
+					topPlayers.add(playerList.get(x));
+					}
 				}
 			}
 			}
