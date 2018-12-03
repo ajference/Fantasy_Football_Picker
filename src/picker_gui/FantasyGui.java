@@ -146,7 +146,6 @@ public class FantasyGui extends Application {
 	    home.setOnAction((event)-> {prim.setScene(main);});
 		
 		Text scenetitle;
-			ScrollPane scrollPane;
 			
 		    GridPane grid = new GridPane();
 		    HBox hbBtn = new HBox(10);
@@ -154,11 +153,11 @@ public class FantasyGui extends Application {
 		    hbBtn.getChildren().add(exit);
 		    hbBtn.getChildren().add(home);
 		    hbBtn.getChildren().add(back);
-		    grid.add(hbBtn, 0, 18);
 		    grid.setAlignment(Pos.CENTER);
 		    grid.setHgap(10);
 		    grid.setVgap(10);
 		    grid.setPadding(new Insets(25, 25, 25, 25));
+		    ScrollPane scrollPane = new ScrollPane(grid);
 		    
 		    Button week1Button  = createButton("Week 1");
 		    Button week2Button  = createButton("Week 2");
@@ -219,8 +218,6 @@ public class FantasyGui extends Application {
 		    week16Button.setOnAction((event)-> {buildWeekMatchesScene(16, prim);});
 		    week17Button.setOnAction((event)-> {buildWeekMatchesScene(17, prim);});
 			   back.setOnAction((event)-> {prim.setScene(main);});
-			   scrollPane = new ScrollPane(grid);
-			   
 			    Weekly = new Scene(scrollPane, 400, 300);
 		    break;
 		   
@@ -246,8 +243,6 @@ public class FantasyGui extends Application {
 		    week16Button.setOnAction((event)-> {showPlayerCalculations(16, prim);});
 		    week17Button.setOnAction((event)-> {showPlayerCalculations(17, prim);});
 			   back.setOnAction((event)-> {prim.setScene(main);});
-			   scrollPane = new ScrollPane(grid);
-			   
 			   	Player = new Scene(scrollPane, 400, 300);
 		    break;
 		   default: 
@@ -255,6 +250,7 @@ public class FantasyGui extends Application {
 		   break;
 		   
 		   }
+		   grid.add(hbBtn, 0, 18);
 		}
 	
 	
@@ -269,6 +265,7 @@ public class FantasyGui extends Application {
 		exit.setOnAction((event)-> {System.exit(0);});
 	    home.setOnAction((event)-> {prim.setScene(main);});
 	    grid.setPadding(new Insets(25, 25, 25, 25));
+	    ScrollPane scrollPane = new ScrollPane(grid);
 	    HBox hbBtn = new HBox(10);
 	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 	    hbBtn.getChildren().add(exit);
@@ -277,14 +274,13 @@ public class FantasyGui extends Application {
 	    exit.setOnAction((event)-> {System.exit(0);});
 	    home.setOnAction((event)-> {prim.setScene(main);});
 	    back.setOnAction((event)-> {prim.setScene(Player);});
-	    grid.add(hbBtn, 0, 4);
 	    Text scenetitle2 = new Text("Best Player picks for Week "+ i);
 	    scenetitle2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	    grid.add(scenetitle2, 0, 0, 1, 1);
         Label name = new Label(CalculateRanks.makeBreakDown(i));
         grid.add(name,0,1);
-        ScrollPane scrollPane = new ScrollPane(grid);
         prim.setScene(new Scene(scrollPane, 500, 375));
+        grid.add(hbBtn, 0, 4);
 	}
 	
 	
@@ -297,6 +293,7 @@ public class FantasyGui extends Application {
 	    Text scenetitle = new Text("Pick A Match To Get More Info");
 	    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 	    grid.add(scenetitle, 0, 0, 1, 1);
+	    ScrollPane scrollPane = new ScrollPane(grid);
 	    HBox hbBtn = new HBox(10);
 	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 	    Button exit = createButton("Exit");
@@ -307,7 +304,6 @@ public class FantasyGui extends Application {
 	    hbBtn.getChildren().add(exit);
 	    hbBtn.getChildren().add(home);
 	    hbBtn.getChildren().add(back);
-	    grid.add(hbBtn, 0, 18);
 		ArrayList<String> matches = nfl.printWeeklySchedule(i);
 
 		    for (int r = 0; r < matches.size(); r++) {
@@ -328,19 +324,18 @@ public class FantasyGui extends Application {
 				    hbBtn2.getChildren().add(exit1);
 				    hbBtn2.getChildren().add(home1);
 				    hbBtn2.getChildren().add(back1);
-		    	    grid2.add(hbBtn2, 0, matches.size());
+				    ScrollPane scrollPane2 = new ScrollPane(grid2);
 		    	    Text scenetitle2 = new Text("Stats for the "+ matches.get(r) + " Match");
 		    	    scenetitle2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		    	    grid2.add(scenetitle2, 0, 0, 1, 1);
 		            Label name = new Label(nfl.teamComparison(i, (r+1)));
 		            grid2.add(name,0,1);
-		            ScrollPane scrollPane2 = new ScrollPane(grid2);
+		            grid2.add(hbBtn2, 0, 2); 
 		            button.setOnAction((event) -> {prim.setScene(new Scene(scrollPane2, 750, 375));});
-		            grid.add(button, 0, (r+1));   
+		            grid.add(button, 0, (r+1)); 
 		    }
-		    ScrollPane scrollPane = new ScrollPane(grid);
-
 		   MatchScenes = new Scene(scrollPane, 450, 375);
+		   grid.add(hbBtn, 0, matches.size()+1);
 		   back.setOnAction((event)-> {prim.setScene(Weekly);});
 		   prim.setScene(MatchScenes);
 	}
@@ -401,6 +396,7 @@ public class FantasyGui extends Application {
 	    hbBtn.getChildren().add(home);
 	    ArrayList<Player> topPlayers = new ArrayList<Player>();
 	    Text scenetitle;
+	    ScrollPane scrollPane = new ScrollPane(grid);
 	    switch (q) {
 		   
 		   case "teamPick":
@@ -435,7 +431,7 @@ public class FantasyGui extends Application {
 	    }
 	    
 	    
-	    ScrollPane scrollPane = new ScrollPane(grid);
+	  
 	    Scene QBScene = new Scene(scrollPane, 450, 375);
 	    return QBScene;
 	}
@@ -456,6 +452,7 @@ public class FantasyGui extends Application {
 	    hbBtn.getChildren().add(home);
 	    ArrayList<Player> topPlayers;
 	    Text scenetitle;
+	    ScrollPane scrollPane = new ScrollPane(grid);
 	    switch (q) {
 		   
 		   case "teamPick":
@@ -490,9 +487,6 @@ public class FantasyGui extends Application {
 	    }
 	     
 	    
-	    
-	    
-	    ScrollPane scrollPane = new ScrollPane(grid);
 	    Scene RBScene = new Scene(scrollPane, 450, 375);
 	    return RBScene;
 	}
@@ -567,6 +561,7 @@ public class FantasyGui extends Application {
 	    hbBtn.getChildren().add(home);
 	    ArrayList<Player> topPlayers;
 	    Text scenetitle;
+	    ScrollPane scrollPane = new ScrollPane(grid);
 	    switch (q) {
 		   
 		   case "teamPick":
@@ -601,7 +596,6 @@ public class FantasyGui extends Application {
 	    }
 
 	    
-	    ScrollPane scrollPane = new ScrollPane(grid);
 	    Scene WR2Scene = new Scene(scrollPane, 450, 375);
 	    return WR2Scene;
 	}
@@ -622,6 +616,7 @@ public class FantasyGui extends Application {
 	    hbBtn.getChildren().add(home);
 	    ArrayList<Player> topPlayers;
 	    Text scenetitle;
+	    ScrollPane scrollPane = new ScrollPane(grid);
 	    switch (q) {
 		   
 		   case "teamPick":
@@ -655,8 +650,7 @@ public class FantasyGui extends Application {
 				   break;
 	    }	    
 	    
-	    
-	    ScrollPane scrollPane = new ScrollPane(grid);
+
 	    Scene WR3Scene = new Scene(scrollPane, 450, 375);
 	    return WR3Scene;
 	}
@@ -677,6 +671,7 @@ public class FantasyGui extends Application {
 	    hbBtn.getChildren().add(home);
 	    ArrayList<Player> topPlayers;
 	    Text scenetitle;
+	    ScrollPane scrollPane = new ScrollPane(grid);
 	    switch (q) {
 		   
 		   case "teamPick":
@@ -711,7 +706,6 @@ public class FantasyGui extends Application {
 	    }	    
 
 	    
-	    ScrollPane scrollPane = new ScrollPane(grid);
 	    scrollPane.setVvalue(0);
 	    Scene TEScene = new Scene(scrollPane, 450, 375);
 	    return TEScene;
@@ -736,6 +730,7 @@ public class FantasyGui extends Application {
 	    home.setOnAction((event)-> {prim.setScene(main);});
 	    hbBtn.getChildren().add(exit);
 	    hbBtn.getChildren().add(home);
+	    ScrollPane scrollPane = new ScrollPane(grid);
 	    if (myTeam.size() == 0) {
 	    	Label info = new Label("Looks Like you don't have a team yet, choose what you want to build you Team With:");
 	    	grid.add(info, 0, 1);
@@ -750,7 +745,6 @@ public class FantasyGui extends Application {
 	    else {
 	    Label info2 = new Label("Click on a player to get more stats on them.)");
 	    grid.add(info2, 0, 1);
-	    grid.add(hbBtn, 0, 16);
 	    Label QB = new Label("Your Quarterback");
 	    grid.add(QB, 0, 2);
 	    Button button = createButton((myTeam.get(0).getName()));
@@ -804,9 +798,9 @@ public class FantasyGui extends Application {
          Button button8 = createButton("Experienced Team builder");
          button8.setOnAction((event) -> {if (Error3() == true) {prim.setScene(creatQB(prim, "teamPick")); myTeam = new ArrayList<Player>(); saveData(myTeam);}});
          grid.add(button8, 0, 15); 
+         grid.add(hbBtn, 0, 16);
 	    }
 	    
-		ScrollPane scrollPane = new ScrollPane(grid);
 	    Scene showMyTeam = new Scene(scrollPane, 450, 375);
 	    return showMyTeam;
 	}
