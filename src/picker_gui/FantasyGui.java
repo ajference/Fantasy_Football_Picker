@@ -1,6 +1,6 @@
 package picker_gui;
 
-import java.awt.Point;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,14 +21,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -313,7 +311,7 @@ public class FantasyGui extends Application {
 		    	    grid2.setHgap(10);
 		    	    grid2.setVgap(10);
 		    	    grid2.setPadding(new Insets(25, 25, 25, 25));
-				    HBox hbBtn2 = new HBox(10);
+				    HBox hbBtn2 = new HBox(10); 
 				    hbBtn2.setAlignment(Pos.BOTTOM_RIGHT);
 				    Button exit1 = createButton("Exit");
 					Button back1 = createButton("Back");
@@ -324,14 +322,14 @@ public class FantasyGui extends Application {
 				    hbBtn2.getChildren().add(exit1);
 				    hbBtn2.getChildren().add(home1);
 				    hbBtn2.getChildren().add(back1);
-				    ScrollPane scrollPane2 = new ScrollPane(grid2);
 		    	    Text scenetitle2 = new Text("Stats for the "+ matches.get(r) + " Match");
 		    	    scenetitle2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		    	    grid2.add(scenetitle2, 0, 0, 1, 1);
+				    ScrollPane scrollPane2 = new ScrollPane(grid2);
 		            Label name = new Label(nfl.teamComparison(i, (r+1)));
 		            grid2.add(name,0,1);
-		            grid2.add(hbBtn2, 0, 2); 
 		            button.setOnAction((event) -> {prim.setScene(new Scene(scrollPane2, 750, 375));});
+		            grid2.add(hbBtn2, 0, 2);
 		            grid.add(button, 0, (r+1)); 
 		    }
 		   MatchScenes = new Scene(scrollPane, 450, 375);
@@ -404,13 +402,13 @@ public class FantasyGui extends Application {
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 1, 1);
 	    topPlayers = nfl.printPlayerPosition(0, 4, 15, myTeam);
-	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    for (int r = 0; r < topPlayers.size(); r++) {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatRB(prim, q));});
             grid.add(button, 0, (r+1));   
 	    }
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    break;
 	    
 		   case "Guru":
@@ -460,13 +458,13 @@ public class FantasyGui extends Application {
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 1, 1);
 	    topPlayers = nfl.printPlayerPosition(0, 3, 15, myTeam);
-	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    for (int r = 0; r < topPlayers.size(); r++) {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR1(prim, q));});
             grid.add(button, 0, (r+1));   
 	    }
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    break;
 	    
 		   case "Guru":
@@ -514,13 +512,13 @@ public class FantasyGui extends Application {
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 1, 1);
 	    topPlayers = nfl.printPlayerPosition(0, 2, 15, myTeam);
-	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    for (int r = 0; r < topPlayers.size(); r++) {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR2(prim, q));});
             grid.add(button, 0, (r+1));   
 	    }
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    break;
 	    
 		   case "Guru":
@@ -569,13 +567,13 @@ public class FantasyGui extends Application {
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 1, 1);
 	    topPlayers = nfl.printPlayerPosition(0, 2, 15, myTeam);
-	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    for (int r = 0; r < topPlayers.size(); r++) {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR3(prim, q));});
             grid.add(button, 0, (r+1));   
 	    }
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    break;
 	    
 		   case "Guru":
@@ -624,13 +622,13 @@ public class FantasyGui extends Application {
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 1, 1);
 	    topPlayers = nfl.printPlayerPosition(0, 2, 15, myTeam);
-	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    for (int r = 0; r < topPlayers.size(); r++) {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatTE(prim, q));});
             grid.add(button, 0, (r+1));   
 	    }
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    break;
 	    
 		   case "Guru":
@@ -679,13 +677,13 @@ public class FantasyGui extends Application {
 		scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		grid.add(scenetitle, 0, 0, 1, 1);
 	    topPlayers = nfl.printPlayerPosition(0, 1, 15, myTeam);
-	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    for (int r = 0; r < topPlayers.size(); r++) {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(displayMyTeam(prim, q));});
             grid.add(button, 0, (r+1));   
 	    }
+	    grid.add(hbBtn, 0, topPlayers.size()+1);
 	    break;
 	    
 		   case "Guru":
@@ -743,7 +741,7 @@ public class FantasyGui extends Application {
 	    	
 	    }
 	    else {
-	    Label info2 = new Label("Click on a player to get more stats on them.)");
+	    Label info2 = new Label("Click on a player to get more stats on them.");
 	    grid.add(info2, 0, 1);
 	    Label QB = new Label("Your Quarterback");
 	    grid.add(QB, 0, 2);
