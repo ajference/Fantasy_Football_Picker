@@ -1,6 +1,7 @@
 package picker_gui;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,6 +23,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -74,9 +77,17 @@ public class FantasyGui extends Application {
 		     main = new Scene(grid, 450, 375);
 		    primaryStage.setScene(main);
 		    
-		    Text scenetitle = new Text("Pick a Category");
-		    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-		    grid.add(scenetitle, 0, 0, 2, 1);
+		    //Text scenetitle = new Text("Pick a Category");
+		    //scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		    //grid.add(scenetitle, 0, 0, 2, 1);
+		    
+		    File f = new File("");
+		    File x = new File(f.getAbsolutePath() + "/src/input_files/Fantasy_Football_Logo.png");
+		    Image img = new Image(x.toURI().toString());
+		    grid.add(new ImageView(img), 0, 0, 2, 1);
+		    
+		    
+		    
 		    Button exit = createButton("Exit");
 		    weekly = createButton("Weekly Schedule");
 		    Team = createButton("My Team");
@@ -136,6 +147,7 @@ public class FantasyGui extends Application {
 		
 		Text scenetitle;
 			ScrollPane scrollPane;
+			
 		    GridPane grid = new GridPane();
 		    HBox hbBtn = new HBox(10);
 		    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
@@ -208,6 +220,7 @@ public class FantasyGui extends Application {
 		    week17Button.setOnAction((event)-> {buildWeekMatchesScene(17, prim);});
 			   back.setOnAction((event)-> {prim.setScene(main);});
 			   scrollPane = new ScrollPane(grid);
+			   
 			    Weekly = new Scene(scrollPane, 400, 300);
 		    break;
 		   
@@ -234,6 +247,7 @@ public class FantasyGui extends Application {
 		    week17Button.setOnAction((event)-> {showPlayerCalculations(17, prim);});
 			   back.setOnAction((event)-> {prim.setScene(main);});
 			   scrollPane = new ScrollPane(grid);
+			   
 			   	Player = new Scene(scrollPane, 400, 300);
 		    break;
 		   default: 
@@ -315,7 +329,7 @@ public class FantasyGui extends Application {
 				    hbBtn2.getChildren().add(home1);
 				    hbBtn2.getChildren().add(back1);
 		    	    grid2.add(hbBtn2, 0, matches.size());
-		    	    Text scenetitle2 = new Text("Stats for the"+ matches.get(r) + " Match");
+		    	    Text scenetitle2 = new Text("Stats for the "+ matches.get(r) + " Match");
 		    	    scenetitle2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		    	    grid2.add(scenetitle2, 0, 0, 1, 1);
 		            Label name = new Label(nfl.teamComparison(i, (r+1)));
