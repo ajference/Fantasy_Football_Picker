@@ -48,6 +48,7 @@ public class FantasyGui extends Application {
 	private Scene main;
 	private NFL nfl;
 	private ArrayList<Player> myTeam; 
+	String style;
 	
 
 	
@@ -71,8 +72,9 @@ public class FantasyGui extends Application {
 		    grid.setHgap(40);
 		    grid.setVgap(40);
 		    grid.setPadding(new Insets(100, 100, 100, 100));
-
+		    style = getClass().getResource("button.css").toExternalForm();
 		     main = new Scene(grid, 450, 375);
+		     main.getStylesheets().add(style);
 		    primaryStage.setScene(main);
 		    
 		    //Text scenetitle = new Text("Pick a Category");
@@ -101,7 +103,7 @@ public class FantasyGui extends Application {
 		    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 		    hbBtn.getChildren().add(exit);
 		    grid.add(hbBtn, 1, 4);
-		    
+		    grid.setStyle("-fx-background-color: #C0C0C0;");
 		    exit.setOnAction((event)-> {System.exit(0);});
 		    
 		    weekly.setOnAction((event)-> {primaryStage.setScene(Weekly);});
@@ -157,6 +159,8 @@ public class FantasyGui extends Application {
 		    grid.setPadding(new Insets(25, 25, 25, 25));
 		    ScrollPane scrollPane = new ScrollPane(grid);
 		    
+		    scrollPane.setStyle("-fx-background-color: #C0C0C0;");
+		    
 		    Button week1Button  = createButton("Week 1");
 		    Button week2Button  = createButton("Week 2");
 		    Button week3Button  = createButton("Week 3");
@@ -192,6 +196,7 @@ public class FantasyGui extends Application {
 		    grid.add(week15Button, 0, 15);
 		    grid.add(week16Button, 0, 16);
 		    grid.add(week17Button, 0, 17);
+		    grid.setStyle("-fx-background-color: #C0C0C0;");
 		   switch (e) {
 		   
 		   case "Weekly":
@@ -217,6 +222,8 @@ public class FantasyGui extends Application {
 		    week17Button.setOnAction((event)-> {buildWeekMatchesScene(17, prim);});
 			   back.setOnAction((event)-> {prim.setScene(main);});
 			    Weekly = new Scene(scrollPane, 400, 300);
+			    Weekly.getStylesheets().add(style);
+			   
 		    break;
 		   
 		   case "Player":
@@ -241,7 +248,10 @@ public class FantasyGui extends Application {
 		    week16Button.setOnAction((event)-> {showPlayerCalculations(16, prim);});
 		    week17Button.setOnAction((event)-> {showPlayerCalculations(17, prim);});
 			   back.setOnAction((event)-> {prim.setScene(main);});
+			   
 			   	Player = new Scene(scrollPane, 400, 300);
+			   	Player.getStylesheets().add(style);
+			   
 		    break;
 		   default: 
 			   System.out.println("error");
@@ -279,6 +289,7 @@ public class FantasyGui extends Application {
         grid.add(name,0,1);
         prim.setScene(new Scene(scrollPane, 500, 375));
         grid.add(hbBtn, 0, 4);
+        grid.setStyle("-fx-background-color: #C0C0C0;");
 	}
 	
 	
@@ -303,6 +314,7 @@ public class FantasyGui extends Application {
 	    hbBtn.getChildren().add(home);
 	    hbBtn.getChildren().add(back);
 		ArrayList<String> matches = nfl.printWeeklySchedule(i);
+		grid.setStyle("-fx-background-color: #C0C0C0;");
 
 		    for (int r = 0; r < matches.size(); r++) {
 		            Button button = createButton(matches.get(r));
@@ -331,8 +343,10 @@ public class FantasyGui extends Application {
 		            button.setOnAction((event) -> {prim.setScene(new Scene(scrollPane2, 750, 375));});
 		            grid2.add(hbBtn2, 0, 2);
 		            grid.add(button, 0, (r+1)); 
+		            grid2.setStyle("-fx-background-color: #C0C0C0;");
 		    }
 		   MatchScenes = new Scene(scrollPane, 450, 375);
+		   MatchScenes.getStylesheets().add(style);
 		   grid.add(hbBtn, 0, matches.size()+1);
 		   back.setOnAction((event)-> {prim.setScene(Weekly);});
 		   prim.setScene(MatchScenes);
@@ -365,10 +379,11 @@ public class FantasyGui extends Application {
 	    Button button = createButton("Start");
 	    button.setOnAction((event) -> {prim.setScene(creatQB(prim, "Guru"));});
 	    grid.add(button, 0, 2);  
-	    	
+	    grid.setStyle("-fx-background-color: #C0C0C0;");
 		
 	    ScrollPane scrollPane = new ScrollPane(grid);
 	    Scene teamStart = new Scene(scrollPane, 450, 375);
+	    teamStart.getStylesheets().add(style);
 	    return teamStart;
 	}
 	
@@ -384,6 +399,7 @@ public class FantasyGui extends Application {
 	    grid.setHgap(10);
 	    grid.setVgap(10);
 	    grid.setPadding(new Insets(25, 25, 25, 25));
+	    grid.setStyle("-fx-background-color: #C0C0C0;");
 	    HBox hbBtn = new HBox(10);
 	    hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 	    Button exit = createButton("Exit");
@@ -431,6 +447,7 @@ public class FantasyGui extends Application {
 	    
 	  
 	    Scene QBScene = new Scene(scrollPane, 450, 375);
+	    QBScene.getStylesheets().add(style);
 	    return QBScene;
 	}
 	
@@ -462,6 +479,7 @@ public class FantasyGui extends Application {
             Button button = createButton((topPlayers.get(r).getName()));
             Player p = topPlayers.get(r);
            button.setOnAction((event) -> {myTeam.add(p); prim.setScene(creatWR1(prim, q));});
+           
             grid.add(button, 0, (r+1));   
 	    }
 	    grid.add(hbBtn, 0, topPlayers.size()+1);
@@ -484,8 +502,9 @@ public class FantasyGui extends Application {
 				   break;
 	    }
 	     
-	    
+	    grid.setStyle("-fx-background-color: #C0C0C0;");
 	    Scene RBScene = new Scene(scrollPane, 450, 375);
+	    RBScene.getStylesheets().add(style);
 	    return RBScene;
 	}
 
@@ -537,9 +556,10 @@ public class FantasyGui extends Application {
 			    }
 				   break;
 	    }
-	    
+	    grid.setStyle("-fx-background-color: #C0C0C0;");
 	    ScrollPane scrollPane = new ScrollPane(grid);
 	    Scene WR1Scene = new Scene(scrollPane, 450, 375);
+	    WR1Scene.getStylesheets().add(style);
 	    return WR1Scene;
 	}
 	
@@ -593,8 +613,9 @@ public class FantasyGui extends Application {
 				   break;
 	    }
 
-	    
+	    grid.setStyle("-fx-background-color: #C0C0C0;");
 	    Scene WR2Scene = new Scene(scrollPane, 450, 375);
+	    WR2Scene.getStylesheets().add(style);
 	    return WR2Scene;
 	}
 	
@@ -648,8 +669,9 @@ public class FantasyGui extends Application {
 				   break;
 	    }	    
 	    
-
+	    grid.setStyle("-fx-background-color: #C0C0C0;");
 	    Scene WR3Scene = new Scene(scrollPane, 450, 375);
+	    WR3Scene.getStylesheets().add(style);
 	    return WR3Scene;
 	}
 	
@@ -703,9 +725,10 @@ public class FantasyGui extends Application {
 				   break;
 	    }	    
 
-	    
+	    grid.setStyle("-fx-background-color: #C0C0C0;");
 	    scrollPane.setVvalue(0);
 	    Scene TEScene = new Scene(scrollPane, 450, 375);
+	    TEScene.getStylesheets().add(style);
 	    return TEScene;
 	}
 	
@@ -798,8 +821,9 @@ public class FantasyGui extends Application {
          grid.add(button8, 0, 15); 
          grid.add(hbBtn, 0, 16);
 	    }
-	    
+	    grid.setStyle("-fx-background-color: #C0C0C0;");
 	    Scene showMyTeam = new Scene(scrollPane, 450, 375);
+	    showMyTeam.getStylesheets().add(style);
 	    return showMyTeam;
 	}
 	
@@ -812,6 +836,7 @@ public class FantasyGui extends Application {
         playerStats.show();
         ScrollPane scrollPane = new ScrollPane(webView);
 	    Scene showMyTeam = new Scene(scrollPane, 450, 375);
+	    showMyTeam.getStylesheets().add(style);
 	    playerStats.setScene(showMyTeam);
 	}
 	
