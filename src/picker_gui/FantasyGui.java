@@ -928,7 +928,4 @@ public class FantasyGui extends Application {
 		return player;
 	}
 	
-	
-	
-	
 }
